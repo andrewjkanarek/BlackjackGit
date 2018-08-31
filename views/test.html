@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blackjack</title>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body>
+
+	<div ng-app="blackjackApp" ng-controller="blackjackCtrl">
+		<div class="container">
+
+
+			<div class="main">
+				<div class="row">
+					<a class="col-sm-1 card" ng-click="addPlayerCard('2')">2</a>
+					<a class="col-sm-1 card" ng-click="addPlayerCard('3')">3</a>
+					<a class="col-sm-1 card" ng-click="addPlayerCard('4')">4</a>
+					<a class="col-sm-1 card" ng-click="addPlayerCard('5')">5</a>
+					<a class="col-sm-1 card" ng-click="addPlayerCard('6')">6</a>
+					<a class="col-sm-1 card" ng-click="addPlayerCard('7')">7</a>
+					<a class="col-sm-1 card" ng-click="addPlayerCard('8')">8</a>
+					<a class="col-sm-1 card" ng-click="addPlayerCard('9')">9</a>
+					<a class="col-sm-1 card" ng-click="addPlayerCard('10')">10</a>
+					<a class="col-sm-1 card" ng-click="addPlayerCard('A')">A</a>
+
+				</div>
+
+<!-- 					<div class = "row">
+						<div class="col-sm-1" id="dealer-row">
+							<p>Dealer Card: </p>
+						</div>
+						<div class="col-sm-1 card"> {{ dealerCard.name }} </div>
+					</div> -->
+					<div class="row" ng-repeat="hand in playerHands">
+						<p class="col-sm-1">Total Value: {{hand.total_value}}</p>
+						<div class="col-sm-1 card" ng-repeat="card in hand.cards track by $index">{{card.name}}</div>
+						<div class="col-sm-4 stats">
+							<p>Probability of Winning After Hitting: {{hand.win_after_hit}}</p>
+							<p>Decision: {{hand.decision}}</p>
+						</div>
+					</div>
+
+
+			</div>
+			<div class="deck-parent">
+				<div class="deck">
+					<div class = "row">
+						<a class="col-sm-1 card" ng-click="removePlayerCard('TWO')">2</a>
+						<p>count: </p>
+					</div>
+					<div class = "row">
+						<a class="col-sm-1 card" ng-click="removePlayerCard('THREE')">3</a>
+						<p>count: </p>
+					</div>
+					<div class = "row">
+						<a class="col-sm-1 card" ng-click="removePlayerCard('FOUR')">4</a>
+						<p>count: </p>
+					</div>
+					<div class = "row">
+						<a class="col-sm-1 card" ng-click="removePlayerCard('FIVE')">5</a>
+						<p>count: </p>
+					</div>
+					<div class = "row">
+						<a class="col-sm-1 card" ng-click="removePlayerCard('SIX')">6</a>
+						<p>count: </p>
+					</div>
+					<div class = "row">
+						<a class="col-sm-1 card" ng-click="removePlayerCard('SEVEN')">7</a>
+						<p>count: </p>
+					</div>
+					<div class = "row">
+						<a class="col-sm-1 card" ng-click="removePlayerCard('EIGHT')">8</a>
+						<p>count: </p>
+					</div>
+					<div class = "row">
+						<a class="col-sm-1 card" ng-click="removePlayerCard('NINE')">9</a>
+						<p>count: </p>
+					</div>
+					<div class = "row">
+						<a class="col-sm-1 card" ng-click="removePlayerCard('TEN')">10</a>
+						<p>count: </p>
+					</div>
+					<div class = "row">
+						<a class="col-sm-1 card" ng-click="removePlayerCard('ACE')">A</a>
+						<p>count: </p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript" src="js/blackjack.js"></script>
+
+</body>
+</html>
