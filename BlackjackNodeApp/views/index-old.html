@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blackjack</title>
+	<link rel="stylesheet" href="css/index.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+	<!-- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script type="text/javascript" src="js/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+	<div class="container" ng-app="blackjackApp" ng-controller="blackjackCtrl">
+
+		<table class="stats-table" ng-repeat="hand in player.hands">
+			<tr class="stats-tr" id="stats-table-header">
+				<td colspan="10">
+					<h1>Player Statistics</h1>
+				</td>
+				<td rowspan="8" colspan="4">
+					<div class="card" ng-repeat="card in deck" ng-click="removeDeckCard(card.card_name)">
+						{{card.card_name}}:{{card.remaining}}
+					</div>
+				</td>
+			</tr>
+			<tr class="stats-tr" id="player-cards">
+				<td>
+					<h2>Player Cards: </h2>
+				</td>
+				<td ng-repeat="card in hand.cards track by $index">
+					<div class="card">{{card.name}}</div>
+				</td>
+				<td ng-if="hand.total_value <= 21">
+					<div class="card" data-toggle="modal" data-target="#playerModal">+</div>
+				</td>
+				<td colspan="3">
+					<h2>Total: {{hand.total_value}}</h2>
+				</td>
+			</tr>
+			<tr class="stats-tr" id="dealer-hand">
+				<td>
+					<h2>Dealer Card: </h2>
+				</td>
+				<td ng-if="dealer_hand.card_value != 0">
+					<div class="card">{{dealer_hand.card_name}}</div>
+				</td>
+				<td ng-if="dealer_hand.card_value == 0">
+					<div class="card">+</div>
+				</td>
+			</tr>
+			<tr class="stats-tr">
+				<td colspan="2"></td>
+				<td colspan="4">
+					<h3>Without Hitting</h2>
+				</td>
+				<td colspan="4">
+					<h3>With Hitting</h2>
+				</td>
+			</tr>
+			<tr class="stats-tr">
+				<td colspan="2">
+					<h3>Winning</h2>
+				</td>
+				<td colspan="4">
+					<h2>{{player.hands[player.curr_hand].win}}</h2>
+				</td>
+				<td colspan="4">
+					<h2>{{player.hands[player.curr_hand].win_ah}}</h2>
+				</td>
+			</tr>
+			<tr class="stats-tr">
+				<td colspan="2">
+					<h3>Losing</h2>
+				</td>
+				<td colspan="4">
+					<h2>{{player.hands[player.curr_hand].lose}}</h2>
+				</td>
+				<td colspan="4">
+					<h2>{{player.hands[player.curr_hand].lose_ah}}</h2>
+				</td>
+			</tr>
+			<tr class="stats-tr">
+				<td colspan="2">
+					<h3>Push</h2>
+				</td>
+				<td colspan="4">
+					<h2>{{player.hands[player.curr_hand].push}}</h2>
+				</td>
+				<td colspan="4">
+					<h2>{{player.hands[player.curr_hand].push_ah}}</h2>
+				</td>
+			</tr>
+			<tr class="stats-tr" id="suggestion">
+				<td colspan="5">
+					<h2 ng-if="hand.decision != 'BUSTED'">You Should {{hand.decision}} </h2>
+					<h2 ng-if="hand.decision == 'BUSTED'">You Busted! </h2>
+				</td>
+			</tr>
+			<tr class="stats-tr" id="decision" ng-if="hand.decision != 'BUSTED'">
+				<td colspan="3" ng-click="playerHit()">
+					<h2>HIT</h2>
+				</td>
+				<td colspan="3" ng-click="playerStand()">
+					<h2>STAND</h2>
+				</td>
+				<td colspan="3">
+					<h2>DOUBLE DOWN</h2>
+				</td>
+				<td colspan="3">
+					<h2>SPLIT</h2>
+				</td>
+
+			</tr>
+
+
+		</table>
+
+		<div ng-click="resetGame()">Reset</div>
+
+
+		<!-- Modal -->
+		<div class="modal fade" id="playerModal" role="dialog">
+			<div class="modal-dialog">
+
+			  <!-- Player Modal content-->
+			  <div class="modal-content">
+			    <div class="modal-header">
+			      <button type="button" class="close" data-dismiss="modal">&times;</button>
+			      <h4 class="modal-title">Add Player Card</h4>
+			    </div>
+			    <div class="modal-body">
+			      <div class="flex-container">
+							<div class="flex-item card" ng-click="addPlayerCard('2')">2</div>
+							<div class="flex-item card" ng-click="addPlayerCard('3')">3</div>
+							<div class="flex-item card" ng-click="addPlayerCard('4')">4</div>
+							<div class="flex-item card" ng-click="addPlayerCard('5')">5</div>
+							<div class="flex-item card" ng-click="addPlayerCard('6')">6</div>
+							<div class="flex-item card" ng-click="addPlayerCard('7')">7</div>
+							<div class="flex-item card" ng-click="addPlayerCard('8')">8</div>
+							<div class="flex-item card" ng-click="addPlayerCard('9')">9</div>
+							<div class="flex-item card" ng-click="addPlayerCard('10')">10</div>
+							<div class="flex-item card" ng-click="addPlayerCard('A')">A</div>
+						</div>
+			    </div>
+			    <div class="modal-footer">
+			      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+		<!-- Dealer Modal -->
+		<!-- <div class="modal fade" id="playerModal" role="dialog">
+			<div class="modal-dialog">
+					  < Dealer Modal content
+			  <div class="modal-content">
+			    <div class="modal-header">
+			      <button type="button" class="close" data-dismiss="modal">&times;</button>
+			      <h4 class="modal-title">Add Dealer Card</h4>
+			    </div>
+			    <div class="modal-body">
+			      <div class="flex-container">
+							<div class="flex-container">
+								<div class="flex-item card" ng-click="addDealerCard('2')">2</div>
+								<div class="flex-item card" ng-click="addDealerCard('3')">3</div>
+								<div class="flex-item card" ng-click="addDealerCard('4')">4</div>
+								<div class="flex-item card" ng-click="addDealerCard('5')">5</div>
+								<div class="flex-item card" ng-click="addDealerCard('6')">6</div>
+								<div class="flex-item card" ng-click="addDealerCard('7')">7</div>
+								<div class="flex-item card" ng-click="addDealerCard('8')">8</div>
+								<div class="flex-item card" ng-click="addDealerCard('9')">9</div>
+								<div class="flex-item card" ng-click="addDealerCard('10')">10</div>
+								<div class="flex-item card" ng-click="addDealerCard('A')">A</div>
+							</div>
+						</div>
+			    </div>
+			    <div class="modal-footer">
+			      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			    </div>
+			  </div>
+			</div>
+		</div> -->
+
+
+
+	</div>
+
+
+
+	<script type="text/javascript" src="js/blackjack.js"></script>
+
+</body>
+</html>

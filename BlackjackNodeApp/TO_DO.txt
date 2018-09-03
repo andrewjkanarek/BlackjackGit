@@ -1,0 +1,9 @@
+
+
+
+
+BUCKET
+- make requests synchronous so they run before new actions are performed -- Don't do this 
+- return multiple objects in one request so you don't have to mke multiple requests
+- create ordered array in js and store in scope variable so ng-each could be used to clean up code in html 
+- create Stats generic class and derive statsCC and statsFast from it
