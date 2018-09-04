@@ -12,3 +12,17 @@
         }
     ]
 }
+
+{
+    "version": "0.2.0",
+    "configurations": [{
+       "type": "lldb",
+       "request": "launch",
+       "name": "Launch Program",
+       "preLaunchTask": "npm: build:dev",
+       "program": "/usr/local/bin/node",
+       "args": [
+          "/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackNodeApp/blackjack_node.js"
+       ]
+    }]
+  }
