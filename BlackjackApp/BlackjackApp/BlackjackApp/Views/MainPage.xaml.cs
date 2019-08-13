@@ -53,10 +53,8 @@ namespace BlackjackApp
 
         private void Draw()
         {
-            // clear view
-            controlGrid.Children.Clear();
 
-            controlGrid = new Grid
+            Grid controlGrid = new Grid
             {
                 RowSpacing = 1,
                 ColumnSpacing = 1
@@ -94,21 +92,35 @@ namespace BlackjackApp
 
             // add player cards
             int startCol = 0;
-            foreach (Card card in game.player.hands[game.player.currentHandIndex].cards)
+            foreach (Card card in game.player.CurrentHand.cards)
             {
                 CreateLabel(card.value.ToString(), 1, startCol++, 1, 1, defaultLabel);
             }
             // add the total
-            CreateLabel(game.player.hands[game.player.currentHandIndex].totalValue.ToString(), 1, (NUM_COLS / 2) - 1, 1, 1, defaultLabel);
+            CreateLabel(game.player.CurrentHand.totalValue.ToString(), 1, (NUM_COLS / 2) - 1, 1, 1, defaultLabel);
 
             // add dealer cards
             startCol = NUM_COLS / 2;
-            foreach (Card card in game.dealer.hands[game.player.currentHandIndex].cards)
+            foreach (Card card in game.dealer.CurrentHand.cards)
             {
                 CreateLabel(card.value.ToString(), 1, startCol++, 1, 1, defaultLabel);
             }
             // add the total
-            CreateLabel(game.dealer.hands[game.player.currentHandIndex].totalValue.ToString(), 1, NUM_COLS - 1, 1, 1, defaultLabel);
+            CreateLabel(game.dealer.CurrentHand.totalValue.ToString(), 1, NUM_COLS - 1, 1, 1, defaultLabel);
+
+            // update the stats
+            // prob win before hit
+            CreateLabel(game.player.CurrentHand.probCounter.beforeHitStats.win.ToString(), 8, 6, 1, 1, defaultLabel);
+            // prob lose before hit
+            CreateLabel(game.player.CurrentHand.probCounter.beforeHitStats.lose.ToString(), 9, 6, 1, 1, defaultLabel);
+            // prob push before hit
+            CreateLabel(game.player.CurrentHand.probCounter.beforeHitStats.push.ToString(), 10, 6, 1, 1, defaultLabel);
+            // prob win after hit
+            CreateLabel(game.player.CurrentHand.probCounter.beforeHitStats.win.ToString(), 8, 12, 1, 1, defaultLabel);
+            // prob lose after hit
+            CreateLabel(game.player.CurrentHand.probCounter.beforeHitStats.win.ToString(), 9, 12, 1, 1, defaultLabel);
+            // prob push after hit
+            CreateLabel(game.player.CurrentHand.probCounter.beforeHitStats.win.ToString(), 10, 12, 1, 1, defaultLabel);
 
             this.Content = controlGrid;
 

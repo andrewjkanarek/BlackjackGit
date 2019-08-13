@@ -10,9 +10,9 @@ C:\Users\akanarek\Desktop\BlackjackGit\BlackjackApp\BlackjackLib\obj\Debug\netst
 C:\Users\akanarek\Desktop\Projects\BlackjackGit\BlackjackApp\BlackjackLib\bin\Debug\netstandard2.0\BlackjackLib.deps.json
 C:\Users\akanarek\Desktop\Projects\BlackjackGit\BlackjackApp\BlackjackLib\bin\Debug\netstandard2.0\BlackjackLib.dll
 C:\Users\akanarek\Desktop\Projects\BlackjackGit\BlackjackApp\BlackjackLib\bin\Debug\netstandard2.0\BlackjackLib.pdb
-C:\Users\akanarek\Desktop\Projects\BlackjackGit\BlackjackApp\BlackjackLib\obj\Debug\netstandard2.0\BlackjackLib.csprojAssemblyReference.cache
 C:\Users\akanarek\Desktop\Projects\BlackjackGit\BlackjackApp\BlackjackLib\obj\Debug\netstandard2.0\BlackjackLib.csproj.CoreCompileInputs.cache
 C:\Users\akanarek\Desktop\Projects\BlackjackGit\BlackjackApp\BlackjackLib\obj\Debug\netstandard2.0\BlackjackLib.AssemblyInfoInputs.cache
 C:\Users\akanarek\Desktop\Projects\BlackjackGit\BlackjackApp\BlackjackLib\obj\Debug\netstandard2.0\BlackjackLib.AssemblyInfo.cs
 C:\Users\akanarek\Desktop\Projects\BlackjackGit\BlackjackApp\BlackjackLib\obj\Debug\netstandard2.0\BlackjackLib.dll
 C:\Users\akanarek\Desktop\Projects\BlackjackGit\BlackjackApp\BlackjackLib\obj\Debug\netstandard2.0\BlackjackLib.pdb
+C:\Users\akanarek\Desktop\Projects\BlackjackGit\BlackjackApp\BlackjackLib\obj\Debug\netstandard2.0\BlackjackLib.csprojAssemblyReference.cache
