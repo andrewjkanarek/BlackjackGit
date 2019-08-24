@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{9BD22CDF-5160-4A70-A5E6-B4381069A655}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BlackjackApp/BlackjackApp/Views/MainPage.xaml">
     <Files>
-      <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs" Line="161" Column="10" />
-      <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml" Line="15" Column="21" />
-      <File FileName="BlackjackApp/BlackjackApp/Views/CardSelection.xaml" Line="5" Column="29" />
-      <File FileName="BlackjackApp/BlackjackApp/Views/CardSelection.xaml.cs" Line="38" Column="1" />
+      <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs" Line="228" Column="1" />
+      <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml" Line="19" Column="13" />
+      <File FileName="BlackjackLib/Deck.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,10 +11,7 @@
           <Node name="BlackjackApp" expanded="True">
             <Node name="BlackjackApp" expanded="True">
               <Node name="Views" expanded="True">
-                <Node name="CardSelection.xaml" expanded="True" />
-                <Node name="MainPage.xaml" expanded="True">
-                  <Node name="MainPage.xaml.cs" selected="True" />
-                </Node>
+                <Node name="MainPage.xaml" expanded="True" />
               </Node>
             </Node>
             <Node name="BlackjackLib" expanded="True">
