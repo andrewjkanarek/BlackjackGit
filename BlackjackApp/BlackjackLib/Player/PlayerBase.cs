@@ -5,12 +5,13 @@ using System.Text;
 namespace BlackjackLib
 {
 
-    public class PlayerBase
+
+    public abstract class PlayerBase
     {
-        public List<Hand> hands;
+        public List<HandBase> hands;
         public int currentHandIndex;
 
-        public Hand CurrentHand
+        public HandBase CurrentHand
         {
             get
             {
@@ -21,19 +22,15 @@ namespace BlackjackLib
 
         public PlayerBase()
         {
-            hands = new List<Hand> { new Hand() };
             currentHandIndex = 0;
         }
 
         public void AddCard(Card card)
         {
-            hands[currentHandIndex].AddCard(card);
+            CurrentHand.AddCard(card);
         }
 
-        public void Split()
-        {
-            hands.Add(new Hand());
-        }
+        public abstract void Split();
     }
 
 

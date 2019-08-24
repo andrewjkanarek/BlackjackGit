@@ -18,12 +18,12 @@ namespace BlackjackLib
 
         public void AddPlayerCard(CardName cardName)
         {
-            player.AddCard(Deck.cardDict[cardName]);
+            player.AddCard(deck.cardDict[cardName]);
         }
 
         public void AddDealerCard(CardName cardName)
         {
-            dealer.AddCard(Deck.cardDict[cardName]);
+            dealer.AddCard(deck.cardDict[cardName]);
         }
     }
 }
