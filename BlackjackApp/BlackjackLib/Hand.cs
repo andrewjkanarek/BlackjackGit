@@ -8,13 +8,15 @@ namespace BlackjackLib
     {
         public List<Card> cards;
         public int totalValue;
-        public StatsBase stats;
+        public Stats beforeHit;
+        public Stats afterHit;
 
         public Hand()
         {
             cards = new List<Card>();
             totalValue = 0;
-            stats = new Stats();           
+            beforeHit = new Stats();
+            afterHit = new Stats();
         }
         
         public void AddCard(Card card)

@@ -1,0 +1,40 @@
+﻿<Properties StartupConfiguration="{9BD22CDF-5160-4A70-A5E6-B4381069A655}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BlackjackLib/Deck.cs">
+    <Files>
+      <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs" Line="232" Column="37" />
+      <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml" Line="15" Column="21" />
+      <File FileName="BlackjackApp/BlackjackApp/Views/CardSelection.xaml" Line="5" Column="29" />
+      <File FileName="BlackjackApp/BlackjackApp/Views/CardSelection.xaml.cs" Line="38" Column="1" />
+      <File FileName="BlackjackApp/BlackjackApp/Helpers.cs" Line="13" Column="1" />
+      <File FileName="BlackjackLib/Deck.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BlackjackApp" expanded="True">
+            <Node name="BlackjackApp" expanded="True">
+              <Node name="Views" expanded="True">
+                <Node name="CardSelection.xaml" expanded="True" />
+                <Node name="MainPage.xaml" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="BlackjackLib" expanded="True">
+              <Node name="Deck.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.BlackjackApp.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0F092ED6-3FD7-4D39-932E-185705B4D983" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.BlackjackApp.Android PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs" relfile="BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs" line="193" column="1" />
+      <Breakpoint file="/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs" relfile="BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs" line="240" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

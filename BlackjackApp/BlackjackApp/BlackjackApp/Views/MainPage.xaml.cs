@@ -22,6 +22,20 @@ namespace BlackjackApp
         private Game game;
         private GameSettings gameSettings;
 
+        // Dictionary to get Color from color name.
+        private Dictionary<string, Color> nameToColor = new Dictionary<string, Color>
+        {
+            { "Aqua", Color.Aqua }, { "Black", Color.Black },
+            { "Blue", Color.Blue }, { "Fucshia", Color.Fuchsia },
+            { "Gray", Color.Gray }, { "Green", Color.Green },
+            { "Lime", Color.Lime }, { "Maroon", Color.Maroon },
+            { "Navy", Color.Navy }, { "Olive", Color.Olive },
+            { "Purple", Color.Purple }, { "Red", Color.Red },
+            { "Silver", Color.Silver }, { "Teal", Color.Teal },
+            { "White", Color.White }, { "Yellow", Color.Yellow }
+        };
+        Picker picker;
+
         #endregion
 
         #region Contructor
@@ -47,6 +61,14 @@ namespace BlackjackApp
             };
 
             game = new Game(gameSettings);
+
+            CreateCardPicker();
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
             Draw();
         }
@@ -90,8 +112,33 @@ namespace BlackjackApp
 
             // Button Actions Row
             CreateButton("Add Player Card", 17, 0, 3, 10, plainButton, AddPlayerCard_Clicked);
-            CreateButton("Add Dealer Card", 17, 10, 3, 10, plainButton, AddPlayerCard_Clicked);
+            CreateButton("Add Dealer Card", 17, 10, 3, 10, plainButton, AddDealerCard_Clicked);
+            //CreateCardPicker("Add Player Card", 17, 0, 3, 10, plainPicker);
+            //CreateCardPicker("Add Dealer Card", 17, 10, 3, 10, plainPicker);
 
+            DrawPlayerCards();
+
+            DrawDealerCards();
+
+            DrawStats();
+
+            controlGrid.Children.Add(picker, 0, 0);
+            Grid.SetRowSpan(picker, 1);
+            Grid.SetColumnSpan(picker, 1);
+
+            // Accomodate iPhone status bar.
+            this.Padding = new Thickness(10, Helpers.GetThicknessTop(), 10, 5);
+
+            this.Content = controlGrid;
+
+        }
+
+        #endregion
+
+        #region Draw Helpers
+
+        private void DrawPlayerCards()
+        {
             // add player cards
             int startCol = 0;
             foreach (Card card in game.player.hands[game.player.currentHandIndex].cards)
@@ -100,18 +147,36 @@ namespace BlackjackApp
             }
             // add the total
             CreateLabel(game.player.hands[game.player.currentHandIndex].totalValue.ToString(), 1, (NUM_COLS / 2) - 1, 1, 1, defaultLabel);
+        }
 
+        private void DrawDealerCards()
+        {
             // add dealer cards
-            startCol = NUM_COLS / 2;
-            foreach (Card card in game.dealer.hands[game.player.currentHandIndex].cards)
+            int startCol = NUM_COLS / 2;
+            foreach (Card card in game.dealer.hands[game.dealer.currentHandIndex].cards)
             {
                 CreateLabel(card.value.ToString(), 1, startCol++, 1, 1, defaultLabel);
             }
+
             // add the total
             CreateLabel(game.dealer.hands[game.player.currentHandIndex].totalValue.ToString(), 1, NUM_COLS - 1, 1, 1, defaultLabel);
+        }
 
-            this.Content = controlGrid;
+        private void DrawStats()
+        {
+            // winning before hit
+            CreateLabel(game.player.CurrentHand.beforeHit.win.ToString(), 8, 6, 1, 6, defaultLabel);
+            // losing before hitting
+            CreateLabel(game.player.CurrentHand.beforeHit.lose.ToString(), 9, 6, 1, 6, defaultLabel);
+            // pushing before hitting
+            CreateLabel(game.player.CurrentHand.beforeHit.push.ToString(), 10, 6, 1, 6, defaultLabel);
 
+            // winning after hit
+            CreateLabel(game.player.CurrentHand.afterHit.win.ToString(), 8, 12, 1, 6, defaultLabel);
+            // losing after hitting
+            CreateLabel(game.player.CurrentHand.afterHit.lose.ToString(), 9, 12, 1, 6, defaultLabel);
+            // pushing after hitting
+            CreateLabel(game.player.CurrentHand.afterHit.push.ToString(), 10, 12, 1, 6, defaultLabel);
         }
 
         #endregion
@@ -126,6 +191,11 @@ namespace BlackjackApp
 
         private void AddPlayerCard_Clicked(object sender, EventArgs e)
         {
+            Device.BeginInvokeOnMainThread(() => {
+                picker.Focus();
+            });
+
+
             game.AddPlayerCard(CardName.TWO);
             Draw();
         }
@@ -149,6 +219,34 @@ namespace BlackjackApp
             Grid.SetRowSpan(button, rowSpan);
             Grid.SetColumnSpan(button, colSpan);
             button.Clicked += eventHandler;
+        }
+
+        private void CreateCardPicker()
+        {
+            picker = new Picker
+            {
+                Title = "Add Card",
+                VerticalOptions = LayoutOptions.CenterAndExpand
+            };
+
+            foreach (CardName cardName in game.deck.cardDict.Keys)
+            {
+                picker.Items.Add(cardName.ToString());
+            }
+
+            picker.SelectedIndexChanged += (sender, args) =>
+            {
+                picker.Unfocus();
+                if (picker.SelectedIndex > -1)
+                {
+                    string colorName = picker.Items[picker.SelectedIndex];
+                }
+
+            };
+
+            picker.IsVisible = false;
+            picker.IsEnabled = true;
+
         }
 
         #endregion

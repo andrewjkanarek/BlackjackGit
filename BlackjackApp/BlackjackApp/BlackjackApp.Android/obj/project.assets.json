@@ -811,34 +811,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\akanarek\\.nuget\\packages\\": {}
+    "/Users/AndrewKanarek/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\akanarek\\Desktop\\Projects\\BlackjackGit\\BlackjackApp\\BlackjackApp\\BlackjackApp.Android\\BlackjackApp.Android.csproj",
+      "projectUniqueName": "/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.Android/BlackjackApp.Android.csproj",
       "projectName": "BlackjackApp.Android",
-      "projectPath": "C:\\Users\\akanarek\\Desktop\\Projects\\BlackjackGit\\BlackjackApp\\BlackjackApp\\BlackjackApp.Android\\BlackjackApp.Android.csproj",
-      "packagesPath": "C:\\Users\\akanarek\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\akanarek\\Desktop\\Projects\\BlackjackGit\\BlackjackApp\\BlackjackApp\\BlackjackApp.Android\\obj\\",
+      "projectPath": "/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.Android/BlackjackApp.Android.csproj",
+      "packagesPath": "/Users/AndrewKanarek/.nuget/packages/",
+      "outputPath": "/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.Android/obj/",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\akanarek\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/AndrewKanarek/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "monoandroid81"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "monoandroid81": {
           "projectReferences": {
-            "C:\\Users\\akanarek\\Desktop\\Projects\\BlackjackGit\\BlackjackApp\\BlackjackApp\\BlackjackApp\\BlackjackApp.csproj": {
-              "projectPath": "C:\\Users\\akanarek\\Desktop\\Projects\\BlackjackGit\\BlackjackApp\\BlackjackApp\\BlackjackApp\\BlackjackApp.csproj"
+            "/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp/BlackjackApp.csproj": {
+              "projectPath": "/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp/BlackjackApp.csproj"
             }
           }
         }

@@ -6,8 +6,8 @@ namespace BlackjackLib
 {
     public class Deck
     {
-        public static Dictionary<CardName, int> cardCountDict;
-        public static Dictionary<CardName, Card> cardDict;
+        public Dictionary<CardName, int> cardCountDict;
+        public Dictionary<CardName, Card> cardDict;
 
 
         public Deck(int numDecks)

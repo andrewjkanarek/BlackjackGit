@@ -179,30 +179,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\akanarek\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/AndrewKanarek/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\akanarek\\Desktop\\Projects\\BlackjackGit\\BlackjackApp\\BlackjackLib\\BlackjackLib.csproj",
+      "projectUniqueName": "/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/BlackjackLib.csproj",
       "projectName": "BlackjackLib",
-      "projectPath": "C:\\Users\\akanarek\\Desktop\\Projects\\BlackjackGit\\BlackjackApp\\BlackjackLib\\BlackjackLib.csproj",
-      "packagesPath": "C:\\Users\\akanarek\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\akanarek\\Desktop\\Projects\\BlackjackGit\\BlackjackApp\\BlackjackLib\\obj\\",
+      "projectPath": "/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/BlackjackLib.csproj",
+      "packagesPath": "/Users/AndrewKanarek/.nuget/packages/",
+      "outputPath": "/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\akanarek\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/AndrewKanarek/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

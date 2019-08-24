@@ -5,12 +5,19 @@ using System.Text;
 namespace BlackjackLib
 {
 
-    
-
     public class PlayerBase
     {
         public List<Hand> hands;
         public int currentHandIndex;
+
+        public Hand CurrentHand
+        {
+            get
+            {
+                if (hands == null || currentHandIndex > (hands.Count - 1)) return null;
+                return hands[currentHandIndex];
+            }
+        }
 
         public PlayerBase()
         {
