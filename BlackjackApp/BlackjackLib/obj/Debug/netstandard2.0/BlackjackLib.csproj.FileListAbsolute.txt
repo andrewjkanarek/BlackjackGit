@@ -27,3 +27,4 @@ C:/Users/akanarek/Desktop/Projects/BlackjackGit/BlackjackApp/BlackjackLib/obj/De
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/bin/Debug/netstandard2.0/BlackjackLib.pdb
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.dll
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.pdb
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.csprojAssemblyReference.cache

@@ -8,12 +8,12 @@ namespace BlackjackLib
     {
         public Player() : base()
         {
-            hands = new List<HandBase> { new HandPlayer() };
+            hands = new List<Hand> { new Hand() };
         }
 
         public override void Split()
         {
-            hands.Add(new HandPlayer());
+            hands.Add(new Hand());
         }
     }
 }

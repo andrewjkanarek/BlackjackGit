@@ -8,10 +8,10 @@ namespace BlackjackLib
 
     public abstract class PlayerBase
     {
-        public List<HandBase> hands;
+        public List<Hand> hands;
         public int currentHandIndex;
 
-        public HandBase CurrentHand
+        public Hand CurrentHand
         {
             get
             {

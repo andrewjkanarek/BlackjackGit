@@ -7,5 +7,7 @@
   <ItemGroup>
     <Compile Remove="Hand.cs" />
     <Compile Remove="Stats\StatsBase.cs" />
+    <Compile Remove="Hand\HandDealer.cs" />
+    <Compile Remove="Hand\HandPlayer.cs" />
   </ItemGroup>
 </Project>

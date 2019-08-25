@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BlackjackLib
 {
-    public abstract class HandBase
+    public class Hand
     {
         #region Public Members
 
@@ -15,7 +15,7 @@ namespace BlackjackLib
 
         #region Constructor
 
-        public HandBase()
+        public Hand()
         {
             cards = new List<Card>();
             totalValue = 0;
@@ -25,22 +25,15 @@ namespace BlackjackLib
 
         #region Public Functions
 
-        public virtual void AddCard(Card card)
-        {
-            AddCardHelper(card);
-        }
-
-        #endregion
-
-        #region Protected Functions
-
-        protected virtual void AddCardHelper(Card card)
+        public void AddCard(Card card)
         {
             cards.Add(card);
             totalValue += card.value;
         }
 
         #endregion
+
+
 
     }
 }

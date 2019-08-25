@@ -61,7 +61,7 @@ namespace BlackjackLib
 
         #region Public Functions
 
-        public abstract void UpdateStats(HandPlayer playerHand, HandDealer dealerHand, Deck deck);
+        public abstract void UpdateStats(Hand playerHand, Hand dealerHand, Deck deck);
 
         #endregion
 

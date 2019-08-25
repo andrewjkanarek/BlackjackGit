@@ -8,7 +8,7 @@ namespace BlackjackLib
     {
         public ProbCounterSlow() : base() { }
         
-        public override void UpdateStats(HandPlayer playerHand, HandDealer dealerHand, Deck deck)
+        public override void UpdateStats(Hand playerHand, Hand dealerHand, Deck deck)
         {
             ResetStats();
             return;
