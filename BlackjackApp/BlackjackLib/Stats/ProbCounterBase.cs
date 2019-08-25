@@ -9,11 +9,11 @@ namespace BlackjackLib
     {
         #region Private Members
 
-        private Stats beforeHitStats;
-        private Stats afterHitStats;
+        public Stats beforeHitStats;
+        public Stats afterHitStats;
 
         // key: outcome, probability of outcomes AFTER player hits
-        private Dictionary<PossibleOutcome, decimal> playerProbDict = new Dictionary<PossibleOutcome, decimal>
+        protected Dictionary<PossibleOutcome, decimal> playerProbDict = new Dictionary<PossibleOutcome, decimal>
         {
             { PossibleOutcome.SIXTEEN, 0 },
             { PossibleOutcome.SEVENTEEN, 0 },
@@ -25,7 +25,7 @@ namespace BlackjackLib
         };
 
         // key: outcome, probability of outcome of dealer hand
-        private Dictionary<PossibleOutcome, decimal> dealerProbDict = new Dictionary<PossibleOutcome, decimal>
+        protected Dictionary<PossibleOutcome, decimal> dealerProbDict = new Dictionary<PossibleOutcome, decimal>
         {
             { PossibleOutcome.SIXTEEN, 0 },
             { PossibleOutcome.SEVENTEEN, 0 },
@@ -33,23 +33,20 @@ namespace BlackjackLib
             { PossibleOutcome.NINETEEN, 0 },
             { PossibleOutcome.TWENTY, 0 },
             { PossibleOutcome.TWENTYONE, 0 },
-            { PossibleOutcome.NOBUST, 0 }
+            { PossibleOutcome.BUST, 0 }
         };
 
         #endregion
 
-        #region Public Members
-
-        public Stats BeforeHitStats { get { return beforeHitStats; } }
-        public Stats AfterHitStats { get { return afterHitStats; } }
-
-        #endregion
+        #region Constructor
 
         protected ProbCounterBase()
         {
             beforeHitStats = new Stats();
             afterHitStats = new Stats();
         }
+
+        #endregion
 
         #region Public Functions
 
@@ -58,6 +55,8 @@ namespace BlackjackLib
         #endregion
 
         #region Private Functions
+
+        #region Set / Reset Dictionaries
 
         protected void ResetStats()
         {
@@ -77,9 +76,9 @@ namespace BlackjackLib
             }
 
             // if the hand is over 16, the dealer cannot hit
-            if (dealerHand.TotalValue >= 16)
+            if (dealerHand.TotalValue >= 17)
             {
-                PossibleOutcome outcome = deck.PossibleOutcomeValues[dealerHand.TotalValue];
+                PossibleOutcome outcome = Deck.PossibleOutcomeValues[dealerHand.TotalValue];
                 dealerProbDict[outcome] += probability;
                 return;
             }
@@ -100,11 +99,13 @@ namespace BlackjackLib
 
                 // update temporary dealer hand and deck
                 Card card = new Card(cardName);
-                dealerHand.AddCard(card);
-                deck.RemoveCard(cardName);
+                Hand handCopy = dealerHand.Clone();
+                Deck deckCopy = deck.Clone();
+                handCopy.AddCard(card);
+                deckCopy.RemoveCard(cardName);
 
                 // update probability with new card and new probability
-                SetDealerProbMap(dealerHand, deck, cardProb);
+                SetDealerProbMap(handCopy, deckCopy, cardProb);
             }
         }
 
@@ -121,9 +122,10 @@ namespace BlackjackLib
             foreach (CardName cardName in deck.CardCountDict.Keys.ToList())
             {
                 int remainingCardCount = deck.CardCountDict[cardName];
+                int cardVal = Deck.CardValDict[cardName];
 
                 // if there are none of this card left, it cannot appear
-                if (remainingCardCount <= 0) continue;
+                if (remainingCardCount <= 0 || playerHand.TotalValue + cardVal > 21) continue;
 
                 // the probability of getting a card AT THIS POINT,
                 // is the normal prob of selecting the card, multiplied by probability of getting to this point
@@ -131,21 +133,164 @@ namespace BlackjackLib
 
                 // update temporary dealer hand and deck
                 Card card = new Card(cardName);
-                playerHand.AddCard(card);
-                deck.RemoveCard(cardName);
+                Hand handCopy = playerHand.Clone();
+                Deck deckCopy = deck.Clone();
+                handCopy.AddCard(card);
+                deckCopy.RemoveCard(cardName);
 
-                if (playerHand.TotalValue > 21) continue;
+                if (handCopy.TotalValue > 21) continue;
 
-                if (playerHand.TotalValue >= 16)
+                playerProbDict[PossibleOutcome.NOBUST] += cardProb;
+
+                if (handCopy.TotalValue >= 17)
                 {
-                    PossibleOutcome outcome = deck.PossibleOutcomeValues[playerHand.TotalValue];
-                    playerProbDict[outcome] += probability;
+                    PossibleOutcome outcome = Deck.PossibleOutcomeValues[handCopy.TotalValue];
+                    playerProbDict[outcome] += cardProb;
                 }
 
                 // update probability with new card and new probability
-                SetPlayerProbMap(playerHand, deck, cardProb);
+                SetPlayerProbMap(handCopy, deckCopy, cardProb);
             }
         }
+
+        #endregion
+
+        #region Get Prob Stats
+
+        #region Before Hitting
+
+        protected decimal GetProbWinBeforeHit(Hand playerHand)
+        {
+
+            if (playerHand.TotalValue < 17)
+            {
+                return dealerProbDict[PossibleOutcome.BUST];
+            }
+
+            if (playerHand.TotalValue > 21)
+            {
+                return (decimal)0;
+            }
+
+            return GetProbHigherHand(playerHand, dealerProbDict);
+
+        }
+
+        protected decimal GetProbLoseBeforeHit(Hand playerHand, Hand dealerHand)
+        {
+            // if the dealer doesn't bust, and player has les than 17, dealer wins
+            if (playerHand.TotalValue < 17)
+            {
+                return 1 - dealerProbDict[PossibleOutcome.BUST];
+            }
+
+            return GetProbLowerHand(playerHand, dealerProbDict);
+        }
+
+        protected decimal GetProbPushBeforeHit(Hand playerHand)
+        {
+            if (playerHand.TotalValue > 21 || playerHand.TotalValue < 17) return (decimal)0;
+
+            PossibleOutcome outcome = Deck.PossibleOutcomeValues[playerHand.TotalValue];
+
+            return dealerProbDict[outcome];
+
+        }
+
+
+        protected decimal GetProbHigherHand(Hand hand, Dictionary<PossibleOutcome, decimal> probDict)
+        {
+            if (hand.TotalValue == 18)
+            {
+                return probDict[PossibleOutcome.SEVENTEEN];
+            }
+            else if (hand.TotalValue == 19)
+            {
+                return probDict[PossibleOutcome.SEVENTEEN] + probDict[PossibleOutcome.EIGHTEEN];
+            }
+            else if (hand.TotalValue == 20)
+            {
+                return probDict[PossibleOutcome.SEVENTEEN] + probDict[PossibleOutcome.EIGHTEEN] + probDict[PossibleOutcome.NINETEEN];
+            }
+            else if (hand.TotalValue == 21)
+            {
+                return probDict[PossibleOutcome.SEVENTEEN] + probDict[PossibleOutcome.EIGHTEEN] +
+                       probDict[PossibleOutcome.NINETEEN] + probDict[PossibleOutcome.TWENTY];
+            }
+
+            return 0;
+        }
+
+        protected decimal GetProbLowerHand(Hand hand, Dictionary<PossibleOutcome, decimal> probDict)
+        {
+            if (hand.TotalValue == 20)
+            {
+                return probDict[PossibleOutcome.TWENTYONE];
+            }
+            else if (hand.TotalValue == 19)
+            {
+                return probDict[PossibleOutcome.TWENTY] + probDict[PossibleOutcome.TWENTYONE];
+            }
+            else if (hand.TotalValue == 18)
+            {
+                return probDict[PossibleOutcome.NINETEEN] + probDict[PossibleOutcome.TWENTY] + probDict[PossibleOutcome.TWENTYONE];
+            }
+            else if (hand.TotalValue == 17)
+            {
+                return probDict[PossibleOutcome.EIGHTEEN] + probDict[PossibleOutcome.NINETEEN] +
+                       probDict[PossibleOutcome.TWENTY] + probDict[PossibleOutcome.TWENTYONE];
+            }
+
+            return 0;
+        }
+
+        #endregion
+
+        #region After Hitting
+
+        protected decimal GetProbWinAfterHit(Hand playerHand, Hand dealerHand, Deck deck)
+        {
+            // two possibilities of winning
+
+            // dealer busts and player doesn't
+            decimal probWinOnDealerBust = playerProbDict[PossibleOutcome.NOBUST] * dealerProbDict[PossibleOutcome.BUST];
+
+            // neither bust but player has better hand
+            decimal probHigherHand = GetProbPlayerHigherAfterHit();
+
+            return probWinOnDealerBust * probHigherHand;
+        }
+
+        protected decimal GetProbPlayerHigherAfterHit()
+        {
+            decimal result = 0;
+
+            // dealer gets 17 and player gets higher
+            result += (dealerProbDict[PossibleOutcome.SEVENTEEN] *
+                (playerProbDict[PossibleOutcome.EIGHTEEN] + playerProbDict[PossibleOutcome.NINETEEN] +
+                 playerProbDict[PossibleOutcome.TWENTY] + playerProbDict[PossibleOutcome.TWENTYONE]));
+
+            // dealer gets 18 and player gets higher
+            result += (dealerProbDict[PossibleOutcome.EIGHTEEN] *
+                (playerProbDict[PossibleOutcome.NINETEEN] + playerProbDict[PossibleOutcome.TWENTY] +
+                 playerProbDict[PossibleOutcome.TWENTYONE]));
+
+            // dealer gets 19 and player gets higher
+            result += (dealerProbDict[PossibleOutcome.NINETEEN] *
+                (playerProbDict[PossibleOutcome.TWENTY] + playerProbDict[PossibleOutcome.TWENTYONE]));
+
+            // dealer gets 20 and player gets higher
+            result += (dealerProbDict[PossibleOutcome.TWENTY] * playerProbDict[PossibleOutcome.TWENTYONE]);
+
+            return result;
+        }
+
+        #endregion
+
+
+
+
+        #endregion
 
         #endregion
 

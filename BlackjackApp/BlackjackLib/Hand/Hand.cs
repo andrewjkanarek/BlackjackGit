@@ -34,6 +34,15 @@ namespace BlackjackLib
             totalValue += card.Value;
         }
 
+        public Hand Clone()
+        {
+            return new Hand
+            {
+                cards = new List<Card>(this.cards),
+                totalValue = this.totalValue
+            };
+        }
+
         #endregion
 
 

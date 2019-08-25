@@ -9,7 +9,6 @@ namespace BlackjackLib
         #region Private Members
 
         private Dictionary<CardName, int> cardCountDict;
-        private Dictionary<int, PossibleOutcome> possibleOutcomeValues;
         private int totalCardCount;
 
         #endregion
@@ -17,7 +16,7 @@ namespace BlackjackLib
         #region Public Members
 
         public Dictionary<CardName, int> CardCountDict { get { return cardCountDict; } }
-        public Dictionary<int, PossibleOutcome> PossibleOutcomeValues { get { return possibleOutcomeValues; } }
+
         public int TotalCardCount { get { return totalCardCount; } }
 
         public static Dictionary<CardName, int> CardValDict = new Dictionary<CardName, int>
@@ -35,10 +34,21 @@ namespace BlackjackLib
 
         };
 
+        public static Dictionary<int, PossibleOutcome> PossibleOutcomeValues = new Dictionary<int, PossibleOutcome>
+        {
+            { 17, PossibleOutcome.SEVENTEEN },
+            { 18, PossibleOutcome.EIGHTEEN },
+            { 19, PossibleOutcome.NINETEEN },
+            { 20, PossibleOutcome.TWENTY },
+            { 21, PossibleOutcome.TWENTYONE }
+        };
+
         #endregion
 
 
         #region Constructor
+
+        public Deck() : this(4) { }
 
         public Deck(int numDecks)
         {
@@ -57,16 +67,6 @@ namespace BlackjackLib
 
             };
 
-            possibleOutcomeValues = new Dictionary<int, PossibleOutcome>
-            {
-                { 16, PossibleOutcome.SIXTEEN },
-                { 17, PossibleOutcome.SEVENTEEN },
-                { 18, PossibleOutcome.EIGHTEEN },
-                { 19, PossibleOutcome.NINETEEN },
-                { 20, PossibleOutcome.TWENTY },
-                { 21, PossibleOutcome.TWENTYONE }
-            };
-
             totalCardCount = 52 * numDecks;
 
 
@@ -75,6 +75,15 @@ namespace BlackjackLib
         #endregion
 
         #region Public Functions
+
+        public Deck Clone()
+        {
+            return new Deck
+            {
+                cardCountDict = new Dictionary<CardName, int>(this.cardCountDict),
+                totalCardCount = this.totalCardCount
+            };
+        }
 
         public decimal GetCardProb(CardName cardName)
         {

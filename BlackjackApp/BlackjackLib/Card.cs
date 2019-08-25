@@ -10,8 +10,8 @@ namespace BlackjackLib
         private CardName name;
         private int value;
 
-        public CardName Name { get; }
-        public int Value { get; }
+        public CardName Name { get { return name; } }
+        public int Value { get { return value; } }
 
         public Card(CardName name)
         {

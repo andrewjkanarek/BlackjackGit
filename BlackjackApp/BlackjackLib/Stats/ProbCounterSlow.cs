@@ -15,7 +15,14 @@ namespace BlackjackLib
             SetDealerProbMap(dealerHand, deck, 1);
             SetPlayerProbMap(playerHand, deck, 1);
 
+            beforeHitStats.win = GetProbWinBeforeHit(playerHand);
+            beforeHitStats.lose = GetProbLoseBeforeHit(playerHand, dealerHand);
+            beforeHitStats.push = GetProbPushBeforeHit(playerHand);
+
+            afterHitStats.win = GetProbWinAfterHit(playerHand, dealerHand, deck);
+
             return;
         }
+
     }
 }

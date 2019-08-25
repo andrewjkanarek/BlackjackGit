@@ -171,17 +171,17 @@ namespace BlackjackApp
         {
             // update the stats
             // prob win before hit
-            CreateLabel(game.ProbCounter.BeforeHitStats.win.ToString(), 8, 6, 1, 2, defaultLabel);
+            CreateLabel(game.ProbCounter.beforeHitStats.win.ToString(), 8, 6, 1, 5, defaultLabel);
             // prob lose before hit
-            CreateLabel(game.ProbCounter.BeforeHitStats.lose.ToString(), 9, 6, 1, 2, defaultLabel);
+            CreateLabel(game.ProbCounter.beforeHitStats.lose.ToString(), 9, 6, 1, 5, defaultLabel);
             // prob push before hit
-            CreateLabel(game.ProbCounter.BeforeHitStats.push.ToString(), 10, 6, 1, 2, defaultLabel);
+            CreateLabel(game.ProbCounter.beforeHitStats.push.ToString(), 10, 6, 1, 5, defaultLabel);
             // prob win after hit
-            CreateLabel(game.ProbCounter.BeforeHitStats.win.ToString(), 8, 12, 1, 2, defaultLabel);
+            CreateLabel(game.ProbCounter.afterHitStats.win.ToString(), 8, 12, 1, 5, defaultLabel);
             // prob lose after hit
-            CreateLabel(game.ProbCounter.BeforeHitStats.win.ToString(), 9, 12, 1, 2, defaultLabel);
+            CreateLabel(game.ProbCounter.afterHitStats.lose.ToString(), 9, 12, 1, 5, defaultLabel);
             // prob push after hit
-            CreateLabel(game.ProbCounter.BeforeHitStats.win.ToString(), 10, 12, 1, 2, defaultLabel);
+            CreateLabel(game.ProbCounter.afterHitStats.push.ToString(), 10, 12, 1, 5, defaultLabel);
         }
 
         #endregion
@@ -231,6 +231,7 @@ namespace BlackjackApp
             {
                 if (playerCardPicker.SelectedIndex > -1)
                 {
+                    playerCardPicker.Unfocus();
                     string cardStr = playerCardPicker.Items[playerCardPicker.SelectedIndex];
                     CardName cardName = cardOptions[cardStr];
                     game.AddPlayerCard(cardName);
@@ -252,6 +253,7 @@ namespace BlackjackApp
             {
                 if (dealerCardPicker.SelectedIndex > -1)
                 {
+                    dealerCardPicker.Unfocus();
                     string cardStr = dealerCardPicker.Items[dealerCardPicker.SelectedIndex];
                     CardName cardName = cardOptions[cardStr];
                     game.AddDealerCard(cardName);
