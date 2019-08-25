@@ -8,8 +8,8 @@ namespace BlackjackLib
     {
         #region Private Members
 
-        private Stats beforeHitStats { get; set; }
-        private Stats afterHitStats { get; set; }
+        private Stats beforeHitStats;
+        private Stats afterHitStats;
 
         private enum PossibleOutcome
         {
@@ -30,7 +30,7 @@ namespace BlackjackLib
             { PossibleOutcome.NINETEEN, 0 },
             { PossibleOutcome.TWENTY, 0 },
             { PossibleOutcome.TWENTYONE, 0 },
-            { PossibleOutcome.NOBUST, 0 },
+            { PossibleOutcome.NOBUST, 0 }
         };
 
         // key: outcome, probability of outcome
@@ -41,7 +41,7 @@ namespace BlackjackLib
             { PossibleOutcome.NINETEEN, 0 },
             { PossibleOutcome.TWENTY, 0 },
             { PossibleOutcome.TWENTYONE, 0 },
-            { PossibleOutcome.NOBUST, 0 },
+            { PossibleOutcome.NOBUST, 0 }
         };
 
         #endregion
@@ -61,7 +61,7 @@ namespace BlackjackLib
 
         #region Public Functions
 
-        public abstract void UpdateStats(HandPlayer hand);
+        public abstract void UpdateStats(HandPlayer playerHand, HandDealer dealerHand, Deck deck);
 
         #endregion
 

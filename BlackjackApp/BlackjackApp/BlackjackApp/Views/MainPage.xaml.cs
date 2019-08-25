@@ -144,44 +144,44 @@ namespace BlackjackApp
         {
             // add player cards
             int startCol = 0;
-            foreach (Card card in game.player.CurrentHand.cards)
+            foreach (Card card in game.Player.CurrentHand.cards)
             {
                 CreateLabel(card.value.ToString(), 1, startCol, 1, 2, defaultLabel);
                 startCol += 2;
             }
             // add the total
-            CreateLabel(game.player.CurrentHand.totalValue.ToString(), 1, (NUM_COLS / 2) - 1, 1, 2, defaultLabel);
+            CreateLabel(game.Player.CurrentHand.totalValue.ToString(), 1, (NUM_COLS / 2) - 1, 1, 2, defaultLabel);
         }
 
         private void DrawDealerCards()
         {
             // add dealer cards
             int startCol = NUM_COLS / 2;
-            foreach (Card card in game.dealer.CurrentHand.cards)
+            foreach (Card card in game.Dealer.CurrentHand.cards)
             {
                 CreateLabel(card.value.ToString(), 1, startCol, 1, 2, defaultLabel);
                 startCol += 2;
             }
 
             // add the total
-            CreateLabel(game.dealer.CurrentHand.totalValue.ToString(), 1, NUM_COLS - 1, 1, 2, defaultLabel);
+            CreateLabel(game.Dealer.CurrentHand.totalValue.ToString(), 1, NUM_COLS - 1, 1, 2, defaultLabel);
         }
 
         private void DrawStats()
         {
             // update the stats
             // prob win before hit
-            CreateLabel(game.player.CurrentHand.probCounter.beforeHitStats.win.ToString(), 8, 6, 1, 2, defaultLabel);
+            CreateLabel(game.ProbCounter.BeforeHitStats.win.ToString(), 8, 6, 1, 2, defaultLabel);
             // prob lose before hit
-            CreateLabel(game.player.CurrentHand.probCounter.beforeHitStats.lose.ToString(), 9, 6, 1, 2, defaultLabel);
+            CreateLabel(game.ProbCounter.BeforeHitStats.lose.ToString(), 9, 6, 1, 2, defaultLabel);
             // prob push before hit
-            CreateLabel(game.player.CurrentHand.probCounter.beforeHitStats.push.ToString(), 10, 6, 1, 2, defaultLabel);
+            CreateLabel(game.ProbCounter.BeforeHitStats.push.ToString(), 10, 6, 1, 2, defaultLabel);
             // prob win after hit
-            CreateLabel(game.player.CurrentHand.probCounter.beforeHitStats.win.ToString(), 8, 12, 1, 2, defaultLabel);
+            CreateLabel(game.ProbCounter.BeforeHitStats.win.ToString(), 8, 12, 1, 2, defaultLabel);
             // prob lose after hit
-            CreateLabel(game.player.CurrentHand.probCounter.beforeHitStats.win.ToString(), 9, 12, 1, 2, defaultLabel);
+            CreateLabel(game.ProbCounter.BeforeHitStats.win.ToString(), 9, 12, 1, 2, defaultLabel);
             // prob push after hit
-            CreateLabel(game.player.CurrentHand.probCounter.beforeHitStats.win.ToString(), 10, 12, 1, 2, defaultLabel);
+            CreateLabel(game.ProbCounter.BeforeHitStats.win.ToString(), 10, 12, 1, 2, defaultLabel);
         }
 
         #endregion

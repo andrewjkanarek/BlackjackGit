@@ -8,9 +8,5 @@ namespace BlackjackLib
     {
         public HandDealer() : base() { }
 
-
-        // stats should not be updated for the dealer
-        protected override void UpdateStats() { }
-
     }
 }

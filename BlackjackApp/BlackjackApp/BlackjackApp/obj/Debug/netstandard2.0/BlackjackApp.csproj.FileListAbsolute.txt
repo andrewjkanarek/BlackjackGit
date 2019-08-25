@@ -35,7 +35,6 @@ C:/Users/akanarek/Desktop/Projects/BlackjackGit/BlackjackApp/BlackjackApp/Blackj
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp/bin/Debug/netstandard2.0/BlackjackLib.pdb
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp/obj/Debug/netstandard2.0/BlackjackApp.csprojAssemblyReference.cache
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp/obj/Debug/netstandard2.0/App.xaml.g.cs
-/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp/obj/Debug/netstandard2.0/Views/CardSelection.xaml.g.cs
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp/obj/Debug/netstandard2.0/Views/MainPage.xaml.g.cs
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp/obj/Debug/netstandard2.0/BlackjackApp.csproj.CoreCompileInputs.cache
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp/obj/Debug/netstandard2.0/BlackjackApp.AssemblyInfoInputs.cache

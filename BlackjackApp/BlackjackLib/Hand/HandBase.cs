@@ -10,7 +10,6 @@ namespace BlackjackLib
 
         public List<Card> cards;
         public int totalValue;
-        public ProbCounterSlow probCounter;
 
         #endregion
 
@@ -20,7 +19,6 @@ namespace BlackjackLib
         {
             cards = new List<Card>();
             totalValue = 0;
-            probCounter = new ProbCounterSlow();
         }
 
         #endregion
@@ -30,7 +28,6 @@ namespace BlackjackLib
         public virtual void AddCard(Card card)
         {
             AddCardHelper(card);
-            UpdateStats();
         }
 
         #endregion
@@ -42,8 +39,6 @@ namespace BlackjackLib
             cards.Add(card);
             totalValue += card.value;
         }
-
-        protected abstract void UpdateStats();
 
         #endregion
 
