@@ -11,6 +11,10 @@ namespace BlackjackLib
         public override void UpdateStats(Hand playerHand, Hand dealerHand, Deck deck)
         {
             ResetStats();
+
+            SetDealerProbMap(dealerHand, deck, 1);
+            SetPlayerProbMap(playerHand, deck, 1);
+
             return;
         }
     }

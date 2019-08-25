@@ -25,6 +25,8 @@ namespace BlackjackLib
 
         public void AddPlayerCard(CardName cardName)
         {
+            if (cardName == CardName.NONE) return;
+
             Card card = new Card(cardName);
             player.AddCard(card);
             deck.RemoveCard(cardName);
@@ -33,6 +35,8 @@ namespace BlackjackLib
 
         public void AddDealerCard(CardName cardName)
         {
+            if (cardName == CardName.NONE) return;
+
             Card card = new Card(cardName);
             dealer.AddCard(card);
             deck.RemoveCard(cardName);
