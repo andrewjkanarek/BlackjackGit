@@ -9,7 +9,7 @@ namespace BlackjackLib
         #region Private Members
 
         private Dictionary<CardName, int> cardCountDict;
-        private Dictionary<CardName, Card> cardDict;
+        private Dictionary<int, PossibleOutcome> possibleOutcomeValues;
         private int totalCardCount;
 
         #endregion
@@ -17,8 +17,23 @@ namespace BlackjackLib
         #region Public Members
 
         public Dictionary<CardName, int> CardCountDict { get { return cardCountDict; } }
-        public Dictionary<CardName, Card> CardDict { get { return cardDict; } }
+        public Dictionary<int, PossibleOutcome> PossibleOutcomeValues { get { return possibleOutcomeValues; } }
         public int TotalCardCount { get { return totalCardCount; } }
+
+        public static Dictionary<CardName, int> CardValDict = new Dictionary<CardName, int>
+        {
+            { CardName.TWO, 2 },
+            { CardName.THREE, 3 },
+            { CardName.FOUR, 4 },
+            { CardName.FIVE, 5 },
+            { CardName.SIX, 6 },
+            { CardName.SEVEN, 7 },
+            { CardName.EIGHT, 8 },
+            { CardName.NINE, 9 },
+            { CardName.TEN, 10 },
+            { CardName.ACE, 11 }
+
+        };
 
         #endregion
 
@@ -42,18 +57,14 @@ namespace BlackjackLib
 
             };
 
-            cardDict = new Dictionary<CardName, Card>
+            possibleOutcomeValues = new Dictionary<int, PossibleOutcome>
             {
-                { CardName.TWO, new Card(CardName.TWO, 2) },
-                { CardName.THREE, new Card(CardName.THREE, 3) },
-                { CardName.FOUR, new Card(CardName.FOUR, 4) },
-                { CardName.FIVE, new Card(CardName.FIVE, 5) },
-                { CardName.SIX, new Card(CardName.SIX, 6) },
-                { CardName.SEVEN, new Card(CardName.SEVEN, 7) },
-                { CardName.EIGHT, new Card(CardName.EIGHT, 8) },
-                { CardName.NINE, new Card(CardName.NINE, 9) },
-                { CardName.TEN, new Card(CardName.TEN, 10) },
-                { CardName.ACE, new Card(CardName.ACE, 11) }
+                { 16, PossibleOutcome.SIXTEEN },
+                { 17, PossibleOutcome.SEVENTEEN },
+                { 18, PossibleOutcome.EIGHTEEN },
+                { 19, PossibleOutcome.NINETEEN },
+                { 20, PossibleOutcome.TWENTY },
+                { 21, PossibleOutcome.TWENTYONE }
             };
 
             totalCardCount = 52 * numDecks;
@@ -100,5 +111,17 @@ namespace BlackjackLib
         NINE,
         TEN,
         ACE
+    }
+
+    public enum PossibleOutcome
+    {
+        SIXTEEN,
+        SEVENTEEN,
+        EIGHTEEN,
+        NINETEEN,
+        TWENTY,
+        TWENTYONE,
+        BUST,
+        NOBUST
     }
 }

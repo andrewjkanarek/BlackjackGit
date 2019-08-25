@@ -144,27 +144,27 @@ namespace BlackjackApp
         {
             // add player cards
             int startCol = 0;
-            foreach (Card card in game.Player.CurrentHand.cards)
+            foreach (Card card in game.Player.CurrentHand.Cards)
             {
-                CreateLabel(card.value.ToString(), 1, startCol, 1, 2, defaultLabel);
+                CreateLabel(card.Value.ToString(), 1, startCol, 1, 2, defaultLabel);
                 startCol += 2;
             }
             // add the total
-            CreateLabel(game.Player.CurrentHand.totalValue.ToString(), 1, (NUM_COLS / 2) - 1, 1, 2, defaultLabel);
+            CreateLabel(game.Player.CurrentHand.TotalValue.ToString(), 1, (NUM_COLS / 2) - 1, 1, 2, defaultLabel);
         }
 
         private void DrawDealerCards()
         {
             // add dealer cards
             int startCol = NUM_COLS / 2;
-            foreach (Card card in game.Dealer.CurrentHand.cards)
+            foreach (Card card in game.Dealer.CurrentHand.Cards)
             {
-                CreateLabel(card.value.ToString(), 1, startCol, 1, 2, defaultLabel);
+                CreateLabel(card.Value.ToString(), 1, startCol, 1, 2, defaultLabel);
                 startCol += 2;
             }
 
             // add the total
-            CreateLabel(game.Dealer.CurrentHand.totalValue.ToString(), 1, NUM_COLS - 1, 1, 2, defaultLabel);
+            CreateLabel(game.Dealer.CurrentHand.TotalValue.ToString(), 1, NUM_COLS - 1, 1, 2, defaultLabel);
         }
 
         private void DrawStats()

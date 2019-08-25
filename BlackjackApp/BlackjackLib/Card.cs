@@ -6,13 +6,17 @@ namespace BlackjackLib
 {
     public class Card
     {
-        public CardName name { get; }
-        public int value { get; }
 
-        public Card(CardName name, int value)
+        private CardName name;
+        private int value;
+
+        public CardName Name { get; }
+        public int Value { get; }
+
+        public Card(CardName name)
         {
             this.name = name;
-            this.value = value;
+            this.value = Deck.CardValDict[name];
         }
     }
 

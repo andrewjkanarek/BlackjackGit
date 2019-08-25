@@ -1,17 +1,11 @@
 ﻿<Properties StartupConfiguration="{9BD22CDF-5160-4A70-A5E6-B4381069A655}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BlackjackLib/Player/Dealer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BlackjackLib/Hand/Hand.cs">
     <Files>
       <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs" Line="228" Column="1" />
-      <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml" />
-      <File FileName="BlackjackLib/Deck.cs" />
-      <File FileName="BlackjackLib/Stats/ProbCounterBase.cs" Line="64" Column="63" />
-      <File FileName="BlackjackLib/Game.cs" />
-      <File FileName="BlackjackLib/Player/Player.cs" Line="12" Column="10" />
-      <File FileName="BlackjackLib/Hand/HandPlayer.cs" />
-      <File FileName="BlackjackLib/Player/PlayerBase.cs" Line="21" Column="10" />
-      <File FileName="BlackjackLib/Stats/ProbCounterFast.cs" Line="11" Column="65" />
-      <File FileName="BlackjackLib/Stats/ProbCounterSlow.cs" Line="11" Column="63" />
-      <File FileName="BlackjackLib/Player/Dealer.cs" Line="16" Column="35" />
+      <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml" Line="32" Column="38" />
+      <File FileName="BlackjackLib/Deck.cs" Line="58" Column="15" />
+      <File FileName="BlackjackLib/Stats/ProbCounterBase.cs" Line="102" Column="72" />
+      <File FileName="BlackjackLib/Hand/Hand.cs" Line="34" Column="32" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,10 +17,10 @@
               </Node>
             </Node>
             <Node name="BlackjackLib" expanded="True">
-              <Node name="Hand" expanded="True" />
-              <Node name="Player" expanded="True">
-                <Node name="Dealer.cs" selected="True" />
+              <Node name="Hand" expanded="True">
+                <Node name="Hand.cs" selected="True" />
               </Node>
+              <Node name="Player" expanded="True" />
               <Node name="Stats" expanded="True" />
             </Node>
           </Node>

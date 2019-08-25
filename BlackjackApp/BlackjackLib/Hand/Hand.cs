@@ -8,8 +8,11 @@ namespace BlackjackLib
     {
         #region Public Members
 
-        public List<Card> cards;
-        public int totalValue;
+        private List<Card> cards;
+        private int totalValue;
+
+        public List<Card> Cards { get { return cards; } }
+        public int TotalValue { get { return totalValue; } }
 
         #endregion
 
@@ -28,7 +31,7 @@ namespace BlackjackLib
         public void AddCard(Card card)
         {
             cards.Add(card);
-            totalValue += card.value;
+            totalValue += card.Value;
         }
 
         #endregion
