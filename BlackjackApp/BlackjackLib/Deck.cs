@@ -6,9 +6,24 @@ namespace BlackjackLib
 {
     public class Deck
     {
-        public Dictionary<CardName, int> cardCountDict;
-        public Dictionary<CardName, Card> cardDict;
+        #region Private Members
 
+        private Dictionary<CardName, int> cardCountDict;
+        private Dictionary<CardName, Card> cardDict;
+        private int totalCardCount;
+
+        #endregion
+
+        #region Public Members
+
+        public Dictionary<CardName, int> CardCountDict { get { return cardCountDict; } }
+        public Dictionary<CardName, Card> CardDict { get { return cardDict; } }
+        public int TotalCardCount { get { return totalCardCount; } }
+
+        #endregion
+
+
+        #region Constructor
 
         public Deck(int numDecks)
         {
@@ -41,8 +56,35 @@ namespace BlackjackLib
                 { CardName.ACE, new Card(CardName.ACE, 11) }
             };
 
+            totalCardCount = 52 * numDecks;
+
 
         }
+
+        #endregion
+
+        #region Public Functions
+
+        public decimal GetCardProb(CardName cardName)
+        {
+            return (decimal)cardCountDict[cardName] / totalCardCount;
+        }
+
+        public void RemoveCard(CardName cardName)
+        {
+            if (cardCountDict[cardName] <= 0) return;
+
+            cardCountDict[cardName]--;
+            totalCardCount--;
+        }
+
+        public void AddCard(CardName cardName)
+        {
+            cardCountDict[cardName]++;
+            totalCardCount++;
+        }
+
+        #endregion
     }
 
     public enum CardName
