@@ -148,13 +148,17 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\BlackjackApp\BlackjackApp.csproj">
-      <Project>{BBAB0030-52BD-48C2-97FA-F919DA17B079}</Project>
+      <Project>{4071E564-1E56-451F-8368-0A79BECEE149}</Project>
       <Name>BlackjackApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hamburger.png" />
+    <BundleResource Include="Resources\hamburger%402x.png" />
   </ItemGroup>
 </Project>

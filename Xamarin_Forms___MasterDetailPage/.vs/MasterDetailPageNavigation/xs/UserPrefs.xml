@@ -1,0 +1,48 @@
+﻿<Properties StartupConfiguration="{3D54620E-23F2-462B-A824-B074D41BD507}|Default">
+  <MonoDevelop.Ide.ItemProperties.MasterDetailPageNavigation.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0F092ED6-3FD7-4D39-932E-185705B4D983" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="MasterDetailPageNavigation/XAML/MainPage.xaml">
+    <Files>
+      <File FileName="MasterDetailPageNavigation/XAML/MainPage.xaml" Line="14" Column="20" />
+      <File FileName="MasterDetailPageNavigation/XAML/MasterPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="MasterDetailPageNavigation/XAML/MainPage.xaml.cs" Line="16" Column="23" />
+      <File FileName="MasterDetailPageNavigation/XAML/ContactsPage.xaml" Line="1" Column="1" />
+      <File FileName="MasterDetailPageNavigation/XAML/MasterPage.xaml" Line="7" Column="20" />
+      <File FileName="MasterDetailPageNavigation/CS/MasterPageCS.cs" Line="56" Column="13" />
+      <File FileName="MasterDetailPageNavigation/XAML/ReminderPage.xaml" Line="12" Column="1" />
+      <File FileName="MasterDetailPageNavigation/XAML/ReminderPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="MasterDetailPageNavigation/CS/ReminderPageCS.cs" Line="5" Column="29" />
+      <File FileName="MasterDetailPageNavigation/App.cs" Line="1" Column="1" />
+      <File FileName="MasterDetailPageNavigation/CS/MainPageCS.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MasterDetailPageNavigation" expanded="True">
+            <Node name="MasterDetailPageNavigation" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+              <Node name="CS" expanded="True" />
+              <Node name="XAML" expanded="True">
+                <Node name="MainPage.xaml" expanded="True" selected="True" />
+                <Node name="MasterPage.xaml" expanded="True" />
+                <Node name="ReminderPage.xaml" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="MasterDetailPageNavigation.Droid" expanded="True">
+              <Node name="Resources" expanded="True">
+                <Node name="drawable" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -125,20 +125,24 @@ namespace BlackjackLib
                 int cardVal = Deck.CardValDict[cardName];
 
                 // if there are none of this card left, it cannot appear
-                if (remainingCardCount <= 0 || playerHand.TotalValue + cardVal > 21) continue;
+                if (remainingCardCount <= 0) continue;
+
+                // update temporary dealer hand and deck
+                Card card = new Card(cardName);
+
+                // add to new hand
+                Hand handCopy = playerHand.Clone();
+                handCopy.AddCard(card);
+
+                if (handCopy.TotalValue > 21) continue;
+
+                // remove from new deck
+                Deck deckCopy = deck.Clone();              
+                deckCopy.RemoveCard(cardName);
 
                 // the probability of getting a card AT THIS POINT,
                 // is the normal prob of selecting the card, multiplied by probability of getting to this point
                 decimal cardProb = deck.GetCardProb(cardName) * probability;
-
-                // update temporary dealer hand and deck
-                Card card = new Card(cardName);
-                Hand handCopy = playerHand.Clone();
-                Deck deckCopy = deck.Clone();
-                handCopy.AddCard(card);
-                deckCopy.RemoveCard(cardName);
-
-                if (handCopy.TotalValue > 21) continue;
 
                 playerProbDict[PossibleOutcome.NOBUST] += cardProb;
 
@@ -248,7 +252,7 @@ namespace BlackjackLib
 
         #region After Hitting
 
-        protected decimal GetProbWinAfterHit(Hand playerHand, Hand dealerHand, Deck deck)
+        protected decimal GetProbWinAfterHit()
         {
             // two possibilities of winning
 
@@ -256,31 +260,58 @@ namespace BlackjackLib
             decimal probWinOnDealerBust = playerProbDict[PossibleOutcome.NOBUST] * dealerProbDict[PossibleOutcome.BUST];
 
             // neither bust but player has better hand
-            decimal probHigherHand = GetProbPlayerHigherAfterHit();
+            decimal probPlayerHigherHand = GetProbHigherHandAfterHit(playerProbDict, dealerProbDict);
 
-            return probWinOnDealerBust * probHigherHand;
+            return probWinOnDealerBust + probPlayerHigherHand;
         }
 
-        protected decimal GetProbPlayerHigherAfterHit()
+        // the probability of dealer winning:
+        //		a) player busts
+        //		OR
+        //		b) dealer>player and dealer doesn't bust
+        protected decimal GetProbLoseAfterHit()
+        {
+            decimal probPlayerBust = 1 - playerProbDict[PossibleOutcome.NOBUST];
+            decimal probDealerHigherHand = GetProbHigherHandAfterHit(dealerProbDict, playerProbDict);
+
+            return probPlayerBust + probDealerHigherHand;
+        }
+
+        protected decimal GetProbPushAfterHit()
+        {
+            decimal result = 0;
+
+            result += (dealerProbDict[PossibleOutcome.SEVENTEEN] * playerProbDict[PossibleOutcome.SEVENTEEN]);
+            result += (dealerProbDict[PossibleOutcome.EIGHTEEN] * playerProbDict[PossibleOutcome.EIGHTEEN]);
+            result += (dealerProbDict[PossibleOutcome.NINETEEN] * playerProbDict[PossibleOutcome.NINETEEN]);
+            result += (dealerProbDict[PossibleOutcome.TWENTY] * playerProbDict[PossibleOutcome.TWENTY]);
+            result += (dealerProbDict[PossibleOutcome.TWENTYONE] * playerProbDict[PossibleOutcome.TWENTYONE]);
+
+            return result;
+        }
+
+        // get probability prob Dict 1 is higher than prob Dict 2
+        protected decimal GetProbHigherHandAfterHit(Dictionary<PossibleOutcome, decimal> probDict1,
+            Dictionary<PossibleOutcome, decimal> probDict2)
         {
             decimal result = 0;
 
             // dealer gets 17 and player gets higher
-            result += (dealerProbDict[PossibleOutcome.SEVENTEEN] *
-                (playerProbDict[PossibleOutcome.EIGHTEEN] + playerProbDict[PossibleOutcome.NINETEEN] +
-                 playerProbDict[PossibleOutcome.TWENTY] + playerProbDict[PossibleOutcome.TWENTYONE]));
+            result += (probDict2[PossibleOutcome.SEVENTEEN] *
+                (probDict1[PossibleOutcome.EIGHTEEN] + probDict1[PossibleOutcome.NINETEEN] +
+                 probDict1[PossibleOutcome.TWENTY] + probDict1[PossibleOutcome.TWENTYONE]));
 
             // dealer gets 18 and player gets higher
-            result += (dealerProbDict[PossibleOutcome.EIGHTEEN] *
-                (playerProbDict[PossibleOutcome.NINETEEN] + playerProbDict[PossibleOutcome.TWENTY] +
-                 playerProbDict[PossibleOutcome.TWENTYONE]));
+            result += (probDict2[PossibleOutcome.EIGHTEEN] *
+                (probDict1[PossibleOutcome.NINETEEN] + probDict1[PossibleOutcome.TWENTY] +
+                 probDict1[PossibleOutcome.TWENTYONE]));
 
             // dealer gets 19 and player gets higher
-            result += (dealerProbDict[PossibleOutcome.NINETEEN] *
-                (playerProbDict[PossibleOutcome.TWENTY] + playerProbDict[PossibleOutcome.TWENTYONE]));
+            result += (probDict2[PossibleOutcome.NINETEEN] *
+                (probDict1[PossibleOutcome.TWENTY] + probDict1[PossibleOutcome.TWENTYONE]));
 
             // dealer gets 20 and player gets higher
-            result += (dealerProbDict[PossibleOutcome.TWENTY] * playerProbDict[PossibleOutcome.TWENTYONE]);
+            result += (probDict2[PossibleOutcome.TWENTY] * probDict1[PossibleOutcome.TWENTYONE]);
 
             return result;
         }

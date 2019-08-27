@@ -1,110 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:BlackjackApp"
-             x:Class="BlackjackApp.MainPage"
-             Title="Blackjack Statistics"
-             BackgroundColor="#404040">
-
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style x:Name="plainButton" x:Key="plainButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#eee"/>
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BorderRadius" Value="0"/>
-            </Style>
-            <Style x:Name="defaultLabel" x:Key="defaultLabel" TargetType="Label">
-                <Setter Property="TextColor" Value="White" />
-            </Style>
-            <Style x:Name="cardLabel" x:Key="cardLabel" TargetType="Label">
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="HorizontalOptions" Value="Center" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    
-    <ContentPage.Content>
-
-        <StackLayout>
-
-            <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <!-- Cards Row-->
-                <Label Text="Player" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="10"
-                       Style="{StaticResource defaultLabel}" />
-                <Label Text="Dealer" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="10" Grid.RowSpan="5" Grid.ColumnSpan="10"
-                       Style="{StaticResource defaultLabel}" />
-
-                <!-- Decision Row-->
-                <Label Text="You should... HIT" HorizontalTextAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="20"
-                       Style="{StaticResource defaultLabel}"/>
-
-                <!-- Stats Grid Row-->
-                <Label Text="Stick" HorizontalTextAlignment="Center" Grid.Row="7" Grid.Column="6" Grid.RowSpan="1" Grid.ColumnSpan="6"
-                       Style="{StaticResource defaultLabel}"/>
-                <Label Text="Hit" HorizontalTextAlignment="Center" Grid.Row="7" Grid.Column="12" Grid.RowSpan="1" Grid.ColumnSpan="6"
-                       Style="{StaticResource defaultLabel}"/>
-                <Label Text="Win" HorizontalTextAlignment="Center" Grid.Row="8" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="6"
-                       Style="{StaticResource defaultLabel}"/>
-                <Label Text="Lose" HorizontalTextAlignment="Center" Grid.Row="9" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="6"
-                       Style="{StaticResource defaultLabel}"/>
-                <Label Text="Push" HorizontalTextAlignment="Center" Grid.Row="10" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="6"
-                       Style="{StaticResource defaultLabel}"/>
-
-                <!-- Button Actions Row-->
-                <Button x:Name="addPlayerCardButton" Text="Add Player Card" Grid.Row="17" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="10"
-                        Style="{StaticResource plainButton}"/>
-                <Button x:Name="addDealerCardButton" Text="Add Dealer Card" Grid.Row="17" Grid.Column="10" Grid.RowSpan="3" Grid.ColumnSpan="10"
-                        Style="{StaticResource plainButton}"/>
-            </Grid>
-
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
-
-
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" 
+				  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+				  xmlns:local="clr-namespace:BlackjackApp;assembly=BlackjackApp"
+				  x:Class="BlackjackApp.MainPage">
+  <MasterDetailPage.Master>
+  	<local:MasterPage x:Name="masterPage" />
+  </MasterDetailPage.Master>
+	<MasterDetailPage.Detail>
+		<NavigationPage>
+			<x:Arguments>
+				<local:GamePage />
+			</x:Arguments>
+		</NavigationPage>
+	</MasterDetailPage.Detail>
+</MasterDetailPage>

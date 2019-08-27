@@ -18,6 +18,15 @@ namespace BlackjackLib
             this.name = name;
             this.value = Deck.CardValDict[name];
         }
+
+        public void ToggleAceValue()
+        {
+            // if it's not an ace, value cannot be toggled
+            if (name != CardName.ACE) return;
+
+            // toggle between values 11 and 1
+            value = (value == 1) ? 11 : 1;
+        }
     }
 
 }

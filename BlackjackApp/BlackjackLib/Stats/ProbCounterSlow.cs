@@ -19,7 +19,9 @@ namespace BlackjackLib
             beforeHitStats.lose = GetProbLoseBeforeHit(playerHand, dealerHand);
             beforeHitStats.push = GetProbPushBeforeHit(playerHand);
 
-            afterHitStats.win = GetProbWinAfterHit(playerHand, dealerHand, deck);
+            afterHitStats.win = GetProbWinAfterHit();
+            afterHitStats.push = GetProbPushAfterHit();
+            afterHitStats.lose = 1 - afterHitStats.win - afterHitStats.push;
 
             return;
         }

@@ -14,35 +14,15 @@ namespace BlackjackApp {
     
     
     [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/MainPage.xaml")]
-    public partial class MainPage : global::Xamarin.Forms.ContentPage {
+    public partial class MainPage : global::Xamarin.Forms.MasterDetailPage {
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Style plainButton;
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::BlackjackApp.MasterPage masterPage;
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Style defaultLabel;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Style cardLabel;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Grid controlGrid;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Button addPlayerCardButton;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
-        private global::Xamarin.Forms.Button addDealerCardButton;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MainPage));
-            plainButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Style>(this, "plainButton");
-            defaultLabel = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Style>(this, "defaultLabel");
-            cardLabel = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Style>(this, "cardLabel");
-            controlGrid = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "controlGrid");
-            addPlayerCardButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "addPlayerCardButton");
-            addDealerCardButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "addDealerCardButton");
+            masterPage = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::BlackjackApp.MasterPage>(this, "masterPage");
         }
     }
 }

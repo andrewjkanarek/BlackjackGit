@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "77ac45fa75810ef28ecf58b94804c46f567cccb4"
+    "signature": "b8ce47b25f1cd4a1592665a52f0dc026069f9964"
   },
   "compilationOptions": {},
   "targets": {
@@ -11,7 +11,7 @@
         "dependencies": {
           "BlackjackLib": "1.0.0",
           "NETStandard.Library": "2.0.3",
-          "Xamarin.Forms": "3.4.0.1008975"
+          "Xamarin.Forms": "4.2.0.709249"
         },
         "runtime": {
           "BlackjackApp.dll": {}
@@ -23,19 +23,19 @@
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
-      "Xamarin.Forms/3.4.0.1008975": {
+      "Xamarin.Forms/4.2.0.709249": {
         "runtime": {
           "lib/netstandard2.0/Xamarin.Forms.Core.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.0"
+            "fileVersion": "4.2.0.75"
           },
           "lib/netstandard2.0/Xamarin.Forms.Platform.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "4.2.0.75"
           },
           "lib/netstandard2.0/Xamarin.Forms.Xaml.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.0.0"
+            "fileVersion": "4.2.0.75"
           }
         }
       },
@@ -66,12 +66,12 @@
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
-    "Xamarin.Forms/3.4.0.1008975": {
+    "Xamarin.Forms/4.2.0.709249": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-tM9syeev45u92OFENGjq+Zw8WiEwLJFiXe317XpL9SY2RRk9sm2fc1lDVjzwz0da+5ZP5fi24NAPsPQdxBdMwQ==",
-      "path": "xamarin.forms/3.4.0.1008975",
-      "hashPath": "xamarin.forms.3.4.0.1008975.nupkg.sha512"
+      "sha512": "sha512-3DWqPSn9kSKJW5mwjmICV/+4IpPQrequEN1VXUhsF0i9KKnfj49jFk9VbJnT9o2aesJAk00NED67XPbSmbxKjw==",
+      "path": "xamarin.forms/4.2.0.709249",
+      "hashPath": "xamarin.forms.4.2.0.709249.nupkg.sha512"
     },
     "BlackjackLib/1.0.0": {
       "type": "project",

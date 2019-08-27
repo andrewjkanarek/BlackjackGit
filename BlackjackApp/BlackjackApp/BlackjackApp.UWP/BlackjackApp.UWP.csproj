@@ -144,13 +144,17 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.5"/>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.5" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BlackjackApp\BlackjackApp.csproj">
       <Project>{BBAB0030-52BD-48C2-97FA-F919DA17B079}</Project>
       <Name>BlackjackApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hamburger.png" />
+    <None Include="hamburger%402x.png" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

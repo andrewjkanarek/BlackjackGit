@@ -1,0 +1,15 @@
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/bin/Debug/netstandard2.0/MasterDetailPageNavigation.deps.json
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/bin/Debug/netstandard2.0/MasterDetailPageNavigation.dll
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/bin/Debug/netstandard2.0/MasterDetailPageNavigation.pdb
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/obj/Debug/netstandard2.0/MasterDetailPageNavigation.csprojAssemblyReference.cache
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/obj/Debug/netstandard2.0/XAML/ContactsPage.xaml.g.cs
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/obj/Debug/netstandard2.0/XAML/MainPage.xaml.g.cs
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/obj/Debug/netstandard2.0/XAML/MasterPage.xaml.g.cs
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/obj/Debug/netstandard2.0/XAML/ReminderPage.xaml.g.cs
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/obj/Debug/netstandard2.0/XAML/TodoListPage.xaml.g.cs
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/obj/Debug/netstandard2.0/MasterDetailPageNavigation.csproj.CoreCompileInputs.cache
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/obj/Debug/netstandard2.0/MasterDetailPageNavigation.AssemblyInfoInputs.cache
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/obj/Debug/netstandard2.0/MasterDetailPageNavigation.AssemblyInfo.cs
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/obj/Debug/netstandard2.0/XamlC.stamp
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/obj/Debug/netstandard2.0/MasterDetailPageNavigation.dll
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/Xamarin_Forms___MasterDetailPage/MasterDetailPageNavigation/obj/Debug/netstandard2.0/MasterDetailPageNavigation.pdb

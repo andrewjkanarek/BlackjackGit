@@ -1,1 +1,0 @@
-C:\Users\akanarek\Desktop\Projects\BlackjackGit\BlackjackApp\BlackjackApp\BlackjackApp.UWP\BlackjackApp.UWP.csproj;x86

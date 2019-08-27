@@ -10,10 +10,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\BlackjackLib\BlackjackLib.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="CS\" />
+    <Folder Include="Static\" />
+    <Folder Include="Static\Images\" />
   </ItemGroup>
 </Project>

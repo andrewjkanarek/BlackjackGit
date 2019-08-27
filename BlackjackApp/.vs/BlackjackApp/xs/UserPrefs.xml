@@ -1,29 +1,21 @@
 ﻿<Properties StartupConfiguration="{9BD22CDF-5160-4A70-A5E6-B4381069A655}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BlackjackLib/Deck.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BlackjackApp/BlackjackApp/App.xaml.cs">
     <Files>
-      <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs" Line="236" Column="1" />
-      <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml" Line="32" Column="38" />
-      <File FileName="BlackjackLib/Game.cs" Line="33" Column="1" />
-      <File FileName="BlackjackLib/Stats/ProbCounterSlow.cs" Line="13" Column="26" />
-      <File FileName="BlackjackLib/Stats/ProbCounterBase.cs" Line="123" Column="1" />
-      <File FileName="BlackjackLib/Hand/Hand.cs" Line="44" Column="10" />
-      <File FileName="BlackjackLib/Player/PlayerBase.cs" Line="31" Column="1" />
-      <File FileName="BlackjackLib/Deck.cs" Line="79" Column="26" />
+      <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml" Line="16" Column="20" />
+      <File FileName="BlackjackApp/BlackjackApp/Views/MasterPage.xaml" Line="32" Column="15" />
+      <File FileName="BlackjackApp/BlackjackApp/Views/MasterPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="BlackjackApp/BlackjackApp/Views/GamePage.xaml" Line="1" Column="1" />
+      <File FileName="BlackjackApp/BlackjackApp/Views/DeckPage.xaml" Line="1" Column="1" />
+      <File FileName="BlackjackApp/BlackjackApp/App.xaml.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="BlackjackApp" expanded="True">
             <Node name="BlackjackApp" expanded="True">
-              <Node name="Views" expanded="True">
-                <Node name="MainPage.xaml" expanded="True" />
+              <Node name="App.xaml" expanded="True">
+                <Node name="App.xaml.cs" selected="True" />
               </Node>
-            </Node>
-            <Node name="BlackjackLib" expanded="True">
-              <Node name="Hand" expanded="True" />
-              <Node name="Player" expanded="True" />
-              <Node name="Stats" expanded="True" />
-              <Node name="Deck.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -36,12 +28,9 @@
   <MonoDevelop.Ide.ItemProperties.BlackjackApp.Android PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/Stats/ProbCounterSlow.cs" relfile="BlackjackLib/Stats/ProbCounterSlow.cs" line="12" column="1" />
-      <Breakpoint file="/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/Stats/ProbCounterSlow.cs" relfile="BlackjackLib/Stats/ProbCounterSlow.cs" line="16" column="1" />
-      <Breakpoint file="/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs" relfile="BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs" line="236" column="1" />
-      <Breakpoint file="/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/Stats/ProbCounterBase.cs" relfile="BlackjackLib/Stats/ProbCounterBase.cs" line="116" column="1" />
-      <Breakpoint file="/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/Stats/ProbCounterBase.cs" relfile="BlackjackLib/Stats/ProbCounterBase.cs" line="131" column="1" />
-      <Breakpoint file="/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/Stats/ProbCounterBase.cs" relfile="BlackjackLib/Stats/ProbCounterBase.cs" line="122" column="1" />
+      <Breakpoint file="/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/Stats/ProbCounterBase.cs" relfile="BlackjackLib/Stats/ProbCounterBase.cs" line="256" column="1" />
+      <Breakpoint file="/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/Stats/ProbCounterBase.cs" relfile="BlackjackLib/Stats/ProbCounterBase.cs" line="273" column="1" />
+      <Breakpoint file="/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/Stats/ProbCounterBase.cs" relfile="BlackjackLib/Stats/ProbCounterBase.cs" line="301" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

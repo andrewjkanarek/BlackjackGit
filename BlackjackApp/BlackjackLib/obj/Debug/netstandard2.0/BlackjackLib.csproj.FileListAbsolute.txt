@@ -19,12 +19,12 @@ C:/Users/akanarek/Desktop/Projects/BlackjackGit/BlackjackApp/BlackjackLib/obj/De
 C:/Users/akanarek/Desktop/Projects/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.pdb
 =======
 >>>>>>> 3b71b95d3d9a5223bc686d10c7724b4acf5c2e49
-/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.csproj.CoreCompileInputs.cache
-/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.AssemblyInfoInputs.cache
-/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.AssemblyInfo.cs
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/bin/Debug/netstandard2.0/BlackjackLib.deps.json
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/bin/Debug/netstandard2.0/BlackjackLib.dll
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/bin/Debug/netstandard2.0/BlackjackLib.pdb
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.csprojAssemblyReference.cache
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.csproj.CoreCompileInputs.cache
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.AssemblyInfoInputs.cache
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.AssemblyInfo.cs
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.dll
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.pdb
-/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackLib/obj/Debug/netstandard2.0/BlackjackLib.csprojAssemblyReference.cache
