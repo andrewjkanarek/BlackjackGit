@@ -7,10 +7,12 @@
 			 IconImageSource="hamburger.png"
 			 Title="Settings">
     <StackLayout>
-        <ListView x:Name="listView" x:FieldModifier="public">
+
+        <ListView x:Name="menuItemListView" x:FieldModifier="public">
            <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:MasterPageItem}">
-                    <local:MasterPageItem Title="Deck" IconSource="deck.png" TargetType="{x:Type local:DeckPage}"/>
+                    <local:MasterPageItem Identifier="rstGameItem" Title="Reset Game"/>
+                    <local:MasterPageItem Identifier="deckItem"  Title="Deck"/>
                 </x:Array>
             </ListView.ItemsSource>
             <ListView.ItemTemplate>

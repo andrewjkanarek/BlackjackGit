@@ -1,4 +1,5 @@
 ﻿using System;
+using BlackjackLib;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,10 +8,17 @@ namespace BlackjackApp
 {
     public partial class App : Application
     {
+        GameSettings gameSettings;
+        Game game;
+
         public App()
         {
             InitializeComponent();
-            MainPage = new NavigationPage(new MainPage());
+
+            gameSettings = new GameSettings();
+            game = new Game(gameSettings);
+
+            MainPage = new NavigationPage(new MainPage(game));
         }
 
         protected override void OnStart()

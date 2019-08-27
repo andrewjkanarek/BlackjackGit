@@ -10,11 +10,20 @@ namespace BlackjackApp
 {
     public partial class MainPage : MasterDetailPage
     {
-        public MainPage()
-        {
-            InitializeComponent();
+        MasterPage masterPage;
+        Game game;
 
-            masterPage.listView.ItemSelected += OnItemSelected;
+        public MainPage(Game game)
+        {
+            this.game = game;
+
+            masterPage = new MasterPage();
+            Master = masterPage;
+            Detail = new NavigationPage(new GamePage(this.game));
+
+            masterPage.menuItemListView.ItemSelected += OnMenuItemSelected;
+
+            //InitializeComponent();
 
             if (Device.RuntimePlatform == Device.UWP)
             {
@@ -22,16 +31,28 @@ namespace BlackjackApp
             }
         }
 
-        void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        async void OnMenuItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var item = e.SelectedItem as MasterPageItem;
-            if (item != null)
+            var item = (MasterPageItem)e.SelectedItem;
+
+            if (item == null) return;
+
+            masterPage.menuItemListView.SelectedItem = null;
+            IsPresented = false;
+
+            if (item.Identifier == "deckItem")
             {
-                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
-                masterPage.listView.SelectedItem = null;
-                IsPresented = false;
+                await Navigation.PushAsync(new DeckPage());
             }
+            else if (item.Identifier == "rstGameItem")
+            {
+                game = new Game(game.GameSettings);
+                Detail = new NavigationPage(new GamePage(game));
+            }
+
+
         }
+
 
     }
 }

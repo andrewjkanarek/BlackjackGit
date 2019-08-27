@@ -3,14 +3,5 @@
 				  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 				  xmlns:local="clr-namespace:BlackjackApp;assembly=BlackjackApp"
 				  x:Class="BlackjackApp.MainPage">
-  <MasterDetailPage.Master>
-  	<local:MasterPage x:Name="masterPage" />
-  </MasterDetailPage.Master>
-	<MasterDetailPage.Detail>
-		<NavigationPage>
-			<x:Arguments>
-				<local:GamePage />
-			</x:Arguments>
-		</NavigationPage>
-	</MasterDetailPage.Detail>
 </MasterDetailPage>
+

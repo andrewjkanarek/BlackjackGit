@@ -18,7 +18,6 @@ namespace BlackjackApp
         #region Private Members
 
         private Game game;
-        private GameSettings gameSettings;
         private Picker playerCardPicker;
         private Picker dealerCardPicker;
 
@@ -41,8 +40,9 @@ namespace BlackjackApp
 
         #region Contructor
 
-        public GamePage()
+        public GamePage(Game game)
         {
+            this.game = game;
             InitializeComponent();
             Init();
         }
@@ -53,13 +53,6 @@ namespace BlackjackApp
 
         public void Init()
         {
-            gameSettings = new GameSettings
-            {
-                NumDecks = 4
-            };
-
-            game = new Game(gameSettings);
-
             CreateDealerCardPicker();
             CreatePlayerCardPicker();
 
