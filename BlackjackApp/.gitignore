@@ -87,6 +87,8 @@ dlldata.c
 *.scc
 *.dll
 *.pdb
+*.json
+*.cache
 
 # Chutzpah Test files
 _Chutzpah*
