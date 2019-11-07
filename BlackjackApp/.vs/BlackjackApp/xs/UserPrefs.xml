@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs">
     <Files>
       <File FileName="BlackjackApp/BlackjackApp/App.xaml" Line="1" Column="1" />
-      <File FileName="BlackjackApp/BlackjackApp/App.xaml.cs" Line="21" Column="63" />
+      <File FileName="BlackjackApp/BlackjackApp/App.xaml.cs" />
       <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml" Line="5" Column="39" />
       <File FileName="BlackjackApp/BlackjackApp/Views/MainPage.xaml.cs" Line="35" Column="1" />
     </Files>
@@ -14,27 +14,18 @@
               <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="GamePage.xaml" expanded="True" />
-                <Node name="MainPage.xaml" expanded="True">
-                  <Node name="MainPage.xaml.cs" selected="True" />
-                </Node>
+                <Node name="MainPage.xaml" expanded="True" />
                 <Node name="MasterPage.xaml" expanded="True" />
               </Node>
               <Node name="App.xaml" expanded="True" />
             </Node>
-            <Node name="BlackjackApp.Android" expanded="True">
-              <Node name="Resources" expanded="True">
-                <Node name="drawable" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="BlackjackLib" expanded="True">
-              <Node name="Stats" expanded="True" />
-            </Node>
+            <Node name="BlackjackApp.iOS" selected="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.BlackjackApp.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.82862352-1716-4CB3-AC2E-7E60EBA1CCE2" />
+  <MonoDevelop.Ide.ItemProperties.BlackjackApp.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.170E43B3-3C9C-4EB1-97AE-AD847B95FCFD" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.BlackjackApp.Android PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />

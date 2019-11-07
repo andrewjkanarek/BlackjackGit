@@ -23,8 +23,6 @@ namespace BlackjackApp
 
             masterPage.menuItemListView.ItemSelected += OnMenuItemSelected;
 
-            //InitializeComponent();
-
             if (Device.RuntimePlatform == Device.UWP)
             {
                 MasterBehavior = MasterBehavior.Popover;
