@@ -9,12 +9,16 @@ namespace BlackjackLib
     {
         #region Public Members
 
+        public List<Card> Cards { get { return cards; } }
+        public int TotalValue { get { return totalValue; } }
+
+        #endregion
+
+        #region Private Members
+
         private List<Card> cards;
         private int totalValue;
         private bool hasSoftAce; // a soft ace is an ace that has a value of 11
-
-        public List<Card> Cards { get { return cards; } }
-        public int TotalValue { get { return totalValue; } }
 
         #endregion
 

@@ -11,6 +11,7 @@ namespace BlackjackLib
 
         public Stats beforeHitStats;
         public Stats afterHitStats;
+        public Decision decision;
 
         // key: outcome, probability of outcomes AFTER player hits
         protected Dictionary<PossibleOutcome, decimal> playerProbDict = new Dictionary<PossibleOutcome, decimal>
@@ -312,6 +313,11 @@ namespace BlackjackLib
             result += (probDict2[PossibleOutcome.TWENTY] * probDict1[PossibleOutcome.TWENTYONE]);
 
             return result;
+        }
+
+        protected Decision GetDecision()
+        {
+            return Decision.HIT;
         }
 
         #endregion

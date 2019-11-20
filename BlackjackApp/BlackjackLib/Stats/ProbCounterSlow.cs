@@ -23,7 +23,7 @@ namespace BlackjackLib
             afterHitStats.push = GetProbPushAfterHit();
             afterHitStats.lose = 1 - afterHitStats.win - afterHitStats.push;
 
-            return;
+            decision = GetDecision();
         }
 
     }
