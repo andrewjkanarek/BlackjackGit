@@ -1,11 +1,77 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:behaviors="clr-namespace:BlackjackApp.Behaviors"
 			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 			 x:Class="BlackjackApp.DeckPage"
 			 Title="Deck Page">
 	<ContentPage.Content>
-		<StackLayout>
-			<Label Text="Deck goes here" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+		<StackLayout Margin="20,35,20,20">
+            <!--<Entry Placeholder="Number of Decks" />-->
+			<TableView Intent="Settings">
+                <TableRoot>
+
+                    <TableSection Title="Deck Settings">
+                        <EntryCell
+                            Label="Number of Decks"
+                            Text="{Binding NumDecks}"
+                            Keyboard="Numeric"
+                            HorizontalTextAlignment="End"/>
+                    </TableSection>
+
+                    <TableSection Title="Card Counts">
+                        <EntryCell
+                            Label="TWOs"
+                            Text="{Binding NumTwos}"
+                            Keyboard="Numeric"
+                            HorizontalTextAlignment="End"/>
+                        <EntryCell
+                            Label="THREEs"
+                            Text="{Binding NumThrees}"
+                            Keyboard="Numeric"
+                            HorizontalTextAlignment="End"/>
+                        <EntryCell
+                            Label="FOURs"
+                            Text="{Binding NumFours}"
+                            Keyboard="Numeric"
+                            HorizontalTextAlignment="End"/>
+                        <EntryCell
+                            Label="FIVEs"
+                            Text="{Binding NumFives}"
+                            Keyboard="Numeric"
+                            HorizontalTextAlignment="End"/>
+                        <EntryCell
+                            Label="SIXs"
+                            Text="{Binding NumSixes}"
+                            Keyboard="Numeric"
+                            HorizontalTextAlignment="End"/>
+                        <EntryCell
+                            Label="SEVENs"
+                            Text="{Binding NumSevens}"
+                            Keyboard="Numeric"
+                            HorizontalTextAlignment="End"/>
+                        <EntryCell
+                            Label="EIGHTs"
+                            Text="{Binding NumEights}"
+                            Keyboard="Numeric"
+                            HorizontalTextAlignment="End"/>
+                        <EntryCell
+                            Label="NINEs"
+                            Text="{Binding NumNines}"
+                            Keyboard="Numeric"
+                            HorizontalTextAlignment="End"/>
+                        <EntryCell
+                            Label="TENs (Ten/Jack/Queen/King)"
+                            Text="{Binding NumTens}"
+                            Keyboard="Numeric"
+                            HorizontalTextAlignment="End"/>
+                        <EntryCell
+                            Label="ACEs"
+                            Text="{Binding NumAces}"
+                            Keyboard="Numeric"
+                            HorizontalTextAlignment="End"/>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

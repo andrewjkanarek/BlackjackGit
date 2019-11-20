@@ -21,5 +21,6 @@
     <Folder Include="CS\" />
     <Folder Include="Static\" />
     <Folder Include="Static\Images\" />
+    <Folder Include="Behaviors\" />
   </ItemGroup>
 </Project>

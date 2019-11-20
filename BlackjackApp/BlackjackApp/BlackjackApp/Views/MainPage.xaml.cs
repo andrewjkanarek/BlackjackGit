@@ -18,7 +18,11 @@ namespace BlackjackApp
             this.game = game;
 
             masterPage = new MasterPage();
+
+            // Master and Detail must be set for MasterDetailPage
             Master = masterPage;
+
+            // initial page is the Game page
             Detail = new NavigationPage(new GamePage(this.game));
 
             masterPage.menuItemListView.ItemSelected += OnMenuItemSelected;
@@ -40,7 +44,7 @@ namespace BlackjackApp
 
             if (item.Identifier == "deckItem")
             {
-                await Navigation.PushAsync(new DeckPage());
+                await Navigation.PushAsync(new DeckPage(game.Deck));
             }
             else if (item.Identifier == "rstGameItem")
             {

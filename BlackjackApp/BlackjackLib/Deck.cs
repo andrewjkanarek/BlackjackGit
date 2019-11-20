@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BlackjackLib
@@ -10,10 +11,15 @@ namespace BlackjackLib
 
         private Dictionary<CardName, int> cardCountDict;
         private int totalCardCount;
+        private int deckCount;
 
         #endregion
 
         #region Public Members
+
+        public const int MAX_DECK_COUNT = 8;
+
+        public int DeckCount {  get { return deckCount; } }
 
         public Dictionary<CardName, int> CardCountDict { get { return cardCountDict; } }
 
@@ -48,10 +54,15 @@ namespace BlackjackLib
 
         #region Constructor
 
-        public Deck() : this(4) { }
+        public Deck() : this(4)
+        {
+            deckCount = 4;
+        }
 
         public Deck(int numDecks)
         {
+            deckCount = numDecks;
+
             cardCountDict = new Dictionary<CardName, int>
             {
                 { CardName.TWO, 4 * numDecks },
@@ -102,6 +113,28 @@ namespace BlackjackLib
         {
             cardCountDict[cardName]++;
             totalCardCount++;
+        }
+
+        public void UpdateDeckCount(int newNumDecks)
+        {
+            if (newNumDecks < 0 || newNumDecks > MAX_DECK_COUNT) return;
+
+            int deckCountDiff = newNumDecks - deckCount;
+
+            foreach (CardName cardName in cardCountDict.Keys.ToList())
+            {
+                int cardsPerDeck = 4;
+                if (cardName == CardName.TEN)
+                {
+                    cardsPerDeck = 16;
+                    
+                }
+
+                cardCountDict[cardName] = Math.Max(0, cardCountDict[cardName] + (cardsPerDeck * deckCountDiff));
+
+            }
+
+            deckCount = newNumDecks;
         }
 
         #endregion

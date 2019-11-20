@@ -15,7 +15,6 @@ namespace BlackjackLib
         // key: outcome, probability of outcomes AFTER player hits
         protected Dictionary<PossibleOutcome, decimal> playerProbDict = new Dictionary<PossibleOutcome, decimal>
         {
-            { PossibleOutcome.SIXTEEN, 0 },
             { PossibleOutcome.SEVENTEEN, 0 },
             { PossibleOutcome.EIGHTEEN, 0 },
             { PossibleOutcome.NINETEEN, 0 },
@@ -27,7 +26,6 @@ namespace BlackjackLib
         // key: outcome, probability of outcome of dealer hand
         protected Dictionary<PossibleOutcome, decimal> dealerProbDict = new Dictionary<PossibleOutcome, decimal>
         {
-            { PossibleOutcome.SIXTEEN, 0 },
             { PossibleOutcome.SEVENTEEN, 0 },
             { PossibleOutcome.EIGHTEEN, 0 },
             { PossibleOutcome.NINETEEN, 0 },

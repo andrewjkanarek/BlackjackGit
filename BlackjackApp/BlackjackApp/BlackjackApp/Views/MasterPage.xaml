@@ -12,7 +12,7 @@
            <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:MasterPageItem}">
                     <local:MasterPageItem Identifier="rstGameItem" Title="Reset Game"/>
-                    <local:MasterPageItem Identifier="deckItem"  Title="Deck"/>
+                    <local:MasterPageItem Identifier="deckItem"  Title="Deck Settings"/>
                 </x:Array>
             </ListView.ItemsSource>
             <ListView.ItemTemplate>
