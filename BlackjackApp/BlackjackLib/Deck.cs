@@ -121,6 +121,8 @@ namespace BlackjackLib
 
             int deckCountDiff = newNumDecks - deckCount;
 
+            totalCardCount = 0;
+
             foreach (CardName cardName in cardCountDict.Keys.ToList())
             {
                 int cardsPerDeck = 4;
@@ -131,10 +133,22 @@ namespace BlackjackLib
                 }
 
                 cardCountDict[cardName] = Math.Max(0, cardCountDict[cardName] + (cardsPerDeck * deckCountDiff));
+                totalCardCount += cardCountDict[cardName];
 
             }
 
             deckCount = newNumDecks;
+        }
+
+        public void UpdateCardCount(CardName cardName, int newCount)
+        {
+            // get the amount of change in the card counts
+            int cardCountChange = Math.Abs(newCount - cardCountDict[cardName]);
+            // if the new amount is less than the old, the change is negative
+            if (newCount < cardCountDict[cardName]) cardCountChange *= -1;
+
+            cardCountDict[cardName] = newCount;
+            totalCardCount += cardCountChange;
         }
 
         #endregion
