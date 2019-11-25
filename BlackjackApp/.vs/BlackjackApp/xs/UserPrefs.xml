@@ -1,33 +1,25 @@
 ﻿<Properties StartupConfiguration="{9BD22CDF-5160-4A70-A5E6-B4381069A655}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="BlackjackLib/Stats/ProbCounterSlow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="BlackjackLib/Stats/ProbCounterBase.cs">
     <Files>
-      <File FileName="BlackjackApp/BlackjackApp/Views/DeckPage.xaml" Line="6" Column="25" />
-      <File FileName="BlackjackApp/BlackjackApp/Views/DeckPage.xaml.cs" Line="40" Column="1" />
-      <File FileName="BlackjackLib/Deck.cs" Line="152" Column="1" />
+      <File FileName="BlackjackApp/BlackjackApp/Views/GamePage.xaml" Line="168" Column="49" />
+      <File FileName="BlackjackApp/BlackjackApp/Views/GamePage.xaml.cs" Line="147" Column="40" />
       <File FileName="BlackjackLib/Game.cs" Line="30" Column="1" />
-      <File FileName="BlackjackApp/BlackjackApp/Views/GamePage.xaml.cs" Line="179" Column="70" />
-      <File FileName="BlackjackApp/BlackjackApp.iOS/Main.cs" Line="17" Column="1" />
-      <File FileName="BlackjackApp/BlackjackApp.iOS/Main.cs" Line="17" Column="1" />
-      <File FileName="BlackjackLib/Stats/ProbCounterSlow.cs" Line="17" Column="1" />
+      <File FileName="BlackjackLib/Stats/ProbCounterSlow.cs" Line="26" Column="31" />
+      <File FileName="BlackjackLib/Stats/ProbCounterBase.cs" Line="318" Column="28" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="BlackjackApp" expanded="True">
             <Node name="BlackjackApp" expanded="True">
-              <Node name="Behaviors" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="DeckPage.xaml" expanded="True" />
                 <Node name="GamePage.xaml" expanded="True" />
-                <Node name="MainPage.xaml" expanded="True" />
-                <Node name="MasterPage.xaml" expanded="True" />
               </Node>
+              <Node name="App.xaml" expanded="True" />
             </Node>
-            <Node name="BlackjackApp.iOS" expanded="True" />
             <Node name="BlackjackLib" expanded="True">
-              <Node name="Hand" expanded="True" />
               <Node name="Stats" expanded="True">
-                <Node name="ProbCounterSlow.cs" selected="True" />
+                <Node name="ProbCounterBase.cs" selected="True" />
               </Node>
             </Node>
           </Node>

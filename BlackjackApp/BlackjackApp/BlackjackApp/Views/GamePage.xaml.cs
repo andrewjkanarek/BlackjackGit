@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using BlackjackLib;
 
 using Xamarin.Forms;
 
 namespace BlackjackApp
 {
-    public partial class GamePage : ContentPage
+    public partial class GamePage : ContentPage, INotifyPropertyChanged
     {
         #region Constants
 
@@ -18,8 +20,7 @@ namespace BlackjackApp
         #region Private Members
 
         private Game game;
-        private Picker playerCardPicker;
-        private Picker dealerCardPicker;
+        private List<string> cards;
 
         Dictionary<string, CardName> cardOptions = new Dictionary<string, CardName>
         {
@@ -38,31 +39,45 @@ namespace BlackjackApp
 
         #endregion
 
+        #region Public Members
+
+        public List<string> Cards { get { return cards;  } }
+
+        public string ProbWinStick { get { return game.ProbCounter.beforeHitStats.win.ToString("F4"); } }
+        public string ProbLoseStick { get { return game.ProbCounter.beforeHitStats.lose.ToString("F4"); } }
+        public string ProbPushStick { get { return game.ProbCounter.beforeHitStats.push.ToString("F4"); } }
+        public string ProbWinHit { get { return game.ProbCounter.afterHitStats.win.ToString("F4"); } }
+        public string ProbLoseHit { get { return game.ProbCounter.afterHitStats.lose.ToString("F4"); } }
+        public string ProbPushHit { get { return game.ProbCounter.afterHitStats.push.ToString("F4"); } }
+
+        public string Decision { get { return String.Format("You should... {0}", game.ProbCounter.decision.ToString()); } }
+
+        #endregion
+
         #region Contructor
 
         public GamePage(Game game)
         {
             this.game = game;
             InitializeComponent();
-            Init();
+            playerCardPicker.Unfocus();
+            dealerCardPicker.Unfocus();
+            cards = cardOptions.Keys
+                .Where(s => !String.IsNullOrWhiteSpace(s))
+                .ToList();
+            BindingContext = this;
         }
 
         #endregion
 
         #region Initialize
 
-        public void Init()
-        {
-            CreateDealerCardPicker();
-            CreatePlayerCardPicker();
-
-        }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            Draw();
+            //Draw();
         }
 
         private void Draw()
@@ -113,32 +128,51 @@ namespace BlackjackApp
 
             DrawStats();
 
-            // add Pickers to control
-            controlGrid.Children.Add(playerCardPicker, 0, 0);
-            controlGrid.Children.Add(dealerCardPicker, 0, 0);
-
-            // Accomodate iPhone status bar.
-            this.Padding = new Thickness(10, Helpers.GetThicknessTop(), 10, 5);
-
             this.Content = controlGrid;
 
         }
 
         #endregion
 
+        #region Property Helpers
+
+        private void UpdateStatsProperties()
+        {
+            OnPropertyChanged("ProbWinStick");
+            OnPropertyChanged("ProbLoseStick");
+            OnPropertyChanged("ProbPushStick");
+            OnPropertyChanged("ProbWinHit");
+            OnPropertyChanged("ProbLoseHit");
+            OnPropertyChanged("ProbPushHit");
+            OnPropertyChanged("Decision");
+        }
+        #endregion
+
         #region Draw Helpers
 
         private void DrawPlayerCards()
         {
-            // add player cards
-            int startCol = 0;
-            foreach (Card card in game.Player.CurrentHand.Cards)
+            playerCardGrid.Children.Clear();
+
+            // only add one row for now - more rows when splitting is added
+            controlGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+
+            // create a column for each card in the hand
+            for (int i = 0; i < game.Player.CurrentHand.Cards.Count; ++i)
             {
-                CreateLabel(card.Value.ToString(), 1, startCol, 1, 2, defaultLabel);
-                startCol += 2;
+                controlGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
+                CreateLabel(game.Player.CurrentHand.Cards[i].Value.ToString(), 0, i, 1, 1, defaultLabel);
             }
-            // add the total
-            CreateLabel(game.Player.CurrentHand.TotalValue.ToString(), 1, (NUM_COLS / 2) - 2, 1, 2, defaultLabel);
+
+            //// add player cards
+            //int startCol = 0;
+            //foreach (Card card in game.Player.CurrentHand.Cards)
+            //{
+            //    CreateLabel(card.Value.ToString(), 1, startCol, 1, 2, defaultLabel);
+            //    startCol += 2;
+            //}
+            //// add the total
+            //CreateLabel(game.Player.CurrentHand.TotalValue.ToString(), 1, (NUM_COLS / 2) - 2, 1, 2, defaultLabel);
         }
 
         private void DrawDealerCards()
@@ -190,6 +224,38 @@ namespace BlackjackApp
             });
         }
 
+        private void PlayerCardPicker_Selected(object sender, EventArgs e)
+        {
+            if (playerCardPicker.SelectedIndex > -1)
+            {
+                playerCardPicker.Unfocus();
+                string cardStr = playerCardPicker.Items[playerCardPicker.SelectedIndex];
+                CardName cardName = cardOptions[cardStr];
+                game.AddPlayerCard(cardName);
+                UpdateStatsProperties();
+                DrawPlayerCards();
+            }
+
+            playerCardPicker.SelectedIndex = -1;
+            playerCardPicker.Unfocus();
+        }
+
+        private void DealerCardPicker_Selected(object sender, EventArgs e)
+        {
+            
+            if (dealerCardPicker.SelectedIndex > -1)
+            {
+                dealerCardPicker.Unfocus();
+                string cardStr = dealerCardPicker.Items[dealerCardPicker.SelectedIndex];
+                CardName cardName = cardOptions[cardStr];
+                game.AddDealerCard(cardName);
+                UpdateStatsProperties();
+            }
+
+            dealerCardPicker.SelectedIndex = -1;
+            dealerCardPicker.Unfocus();
+        }
+
         #endregion
 
         #region UI Helpers
@@ -209,70 +275,6 @@ namespace BlackjackApp
             Grid.SetRowSpan(button, rowSpan);
             Grid.SetColumnSpan(button, colSpan);
             button.Clicked += eventHandler;
-        }
-
-        private void CreatePlayerCardPicker()
-        {
-            CreateCardPicker(ref playerCardPicker, "Add Your Card");
-
-            playerCardPicker.SelectedIndexChanged += (sender, args) =>
-            {
-                if (playerCardPicker.SelectedIndex > -1)
-                {
-                    playerCardPicker.Unfocus();
-                    string cardStr = playerCardPicker.Items[playerCardPicker.SelectedIndex];
-                    CardName cardName = cardOptions[cardStr];
-                    game.AddPlayerCard(cardName);
-                    Draw();
-
-                }
-
-                playerCardPicker.SelectedIndex = -1;
-                playerCardPicker.Unfocus();
-
-            };
-        }
-
-        private void CreateDealerCardPicker()
-        {
-            CreateCardPicker(ref dealerCardPicker, "Add Your Card");
-
-            dealerCardPicker.SelectedIndexChanged += (sender, args) =>
-            {
-                if (dealerCardPicker.SelectedIndex > -1)
-                {
-                    dealerCardPicker.Unfocus();
-                    string cardStr = dealerCardPicker.Items[dealerCardPicker.SelectedIndex];
-                    CardName cardName = cardOptions[cardStr];
-                    game.AddDealerCard(cardName);
-
-                    Draw();
-                }
-
-                dealerCardPicker.SelectedIndex = -1;
-                dealerCardPicker.Unfocus();
-
-
-
-            };
-        }
-
-        private void CreateCardPicker(ref Picker picker, string text)
-        {
-            picker = new Picker
-            {
-                Title = text,
-                VerticalOptions = LayoutOptions.CenterAndExpand
-            };
-
-            foreach (string cardName in cardOptions.Keys)
-            {
-                picker.Items.Add(cardName);
-            }
-
-            picker.IsVisible = false;
-            picker.IsEnabled = true;
-
         }
 
         #endregion

@@ -45,6 +45,11 @@
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/bin/iPhoneSimulator/Debug/BlackjackLib.dll
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/bin/iPhoneSimulator/Debug/BlackjackApp.pdb
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/bin/iPhoneSimulator/Debug/BlackjackLib.pdb
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/BlackjackApp.iOS.csprojAssemblyReference.cache
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/XamlC.stamp
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/BlackjackApp.iOS.csproj.CopyComplete
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/BlackjackApp.iOS.exe
+/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/BlackjackApp.iOS.pdb
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone12.1-13.2/ibtool/_BundleResourceWithLogicalName.items
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone12.1-13.2/actool/_PartialAppManifest.items
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone12.1-13.2/actool/_BundleResourceWithLogicalName.items
@@ -53,8 +58,3 @@
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone12.1-13.2/optimized/hamburger.png
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone12.1-13.2/optimized/hamburger@2x.png
 /Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone12.1-13.2/optimized/
-/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/BlackjackApp.iOS.csprojAssemblyReference.cache
-/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/XamlC.stamp
-/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/BlackjackApp.iOS.csproj.CopyComplete
-/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/BlackjackApp.iOS.exe
-/Users/AndrewKanarek/Desktop/Tech/BlackjackGit/BlackjackApp/BlackjackApp/BlackjackApp.iOS/obj/iPhoneSimulator/Debug/BlackjackApp.iOS.pdb

@@ -23,16 +23,189 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+            iOS="10, 20, 10, 5"
+            Android="10, 40, 10, 5">          
+        </OnPlatform>
+    </ContentPage.Padding>
     
     <ContentPage.Content>
 
-        <StackLayout>
 
-            <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1">
-                
+
+            <Grid
+                x:Name="controlGrid"
+                RowSpacing="5"
+                ColumnSpacing="5">
+                <!--20 rows-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--20 columns-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--cards row-->
+                <Label Text="Player" Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="10" Style="{StaticResource defaultLabel}"/>
+                <Label Text="Dealer" Grid.Row="0" Grid.Column="10" Grid.RowSpan="5" Grid.ColumnSpan="10" Style="{StaticResource defaultLabel}"/>
+
+                <Grid x:Name="playerCardGrid" Grid.Row="1" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="10" />
+                <Grid x:Name="dealerCardGrid" Grid.Row="1" Grid.Column="10" Grid.RowSpan="5" Grid.ColumnSpan="10" />
+
+                <!--probability table-->
+                <Grid Grid.Row="5" Grid.Column="0" Grid.RowSpan="5" Grid.ColumnSpan="20" RowSpacing="1" ColumnSpacing="1">
+
+                    <!--4 rows-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!--3 columns-->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--table labels-->
+
+                    <Label Text="Stick" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" Style="{StaticResource defaultLabel}"/>
+                    <Label Text="Hit" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" Style="{StaticResource defaultLabel}"/>
+                    <Label Text="Win" Grid.Row="1" Grid.Column="0" Style="{StaticResource defaultLabel}"/>
+                    <Label Text="Lose" Grid.Row="2" Grid.Column="0" Style="{StaticResource defaultLabel}"/>
+                    <Label Text="Push" Grid.Row="3" Grid.Column="0" Style="{StaticResource defaultLabel}"/>
+
+                    <!--table values-->
+
+                    <!-- stick win -->
+                    <Label
+                        Text="{Binding ProbWinStick}"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource defaultLabel}"/>
+                    <!-- stick lose -->
+                    <Label
+                        Text="{Binding ProbLoseStick}"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource defaultLabel}"/>
+                    <!-- stick split -->
+                    <Label
+                        Text="{Binding ProbPushStick}"
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource defaultLabel}"/>
+                    <!-- hit win -->
+                    <Label
+                        Text="{Binding ProbWinHit}"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource defaultLabel}"/>
+                    <!-- hit lose -->
+                    <Label
+                        Text="{Binding ProbLoseHit}"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource defaultLabel}"/>
+                    <!-- hit split -->
+                    <Label
+                        Text="{Binding ProbPushHit}"
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource defaultLabel}"/>
+
+                </Grid>
+
+                <!--decision row-->
+                <Label
+                    Text="{Binding Decision}"
+                    Grid.Row="10" Grid.Column="0"
+                    Grid.RowSpan="5" Grid.ColumnSpan="10"
+                    Style="{StaticResource defaultLabel}"/>
+
+                <Button
+                    Text="Add Player Card"
+                    Grid.Row="17"
+                    Grid.Column="0"
+                    Grid.RowSpan="3"
+                    Grid.ColumnSpan="10"
+                    Style="{StaticResource plainButton}"
+                    Clicked="AddPlayerCard_Clicked"/>
+                <Button
+                    Text="Add Dealer Card"
+                    Grid.Row="17"
+                    Grid.Column="10"
+                    Grid.RowSpan="3"
+                    Grid.ColumnSpan="10"
+                    Style="{StaticResource plainButton}"
+                    Clicked="AddDealerCard_Clicked"/>
+
+                <Picker x:Name="playerCardPicker"
+                    IsVisible="False"
+                    IsEnabled="True"
+                    ItemsSource="{Binding Cards}"
+                    SelectedIndexChanged="PlayerCardPicker_Selected" />                
+
+                <Picker x:Name="dealerCardPicker"
+                    IsVisible="False"
+                    IsEnabled="True"
+                    ItemsSource="{Binding Cards}"
+                    SelectedIndexChanged="DealerCardPicker_Selected" />
+
+
             </Grid>
 
-        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
 
