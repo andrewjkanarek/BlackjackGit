@@ -21,6 +21,9 @@ namespace BlackjackApp
 
         private Game game;
         private List<string> cards;
+        private List<Image> playerCardImages;
+        private List<Image> dealerCardImages;
+
 
         Dictionary<string, CardName> cardOptions = new Dictionary<string, CardName>
         {
@@ -37,6 +40,20 @@ namespace BlackjackApp
             { "ACE", CardName.ACE }
         };
 
+        Dictionary<CardName, string> cardImageDict = new Dictionary<CardName, string>
+        {
+            { CardName.TWO, "BlackjackApp.Static.Images.2H.png" },
+            { CardName.THREE, "BlackjackApp.Static.Images.3H.png" },
+            { CardName.FOUR, "BlackjackApp.Static.Images.4H.png" },
+            { CardName.FIVE, "BlackjackApp.Static.Images.5H.png" },
+            { CardName.SIX, "BlackjackApp.Static.Images.6H.png" },
+            { CardName.SEVEN, "BlackjackApp.Static.Images.7H.png" },
+            { CardName.EIGHT, "BlackjackApp.Static.Images.8H.png" },
+            { CardName.NINE, "BlackjackApp.Static.Images.9H.png" },
+            { CardName.TEN, "BlackjackApp.Static.Images.10H.png" },
+            { CardName.ACE, "BlackjackApp.Static.Images.AH.png" }
+        };
+
         #endregion
 
         #region Public Members
@@ -51,6 +68,8 @@ namespace BlackjackApp
         public string ProbPushHit { get { return game.ProbCounter.afterHitStats.push.ToString("F4"); } }
 
         public string Decision { get { return String.Format("You should... {0}", game.ProbCounter.decision.ToString()); } }
+        public string PlayerTotal { get { return game.Player.CurrentHand.TotalValue.ToString(); } }
+        public string DealerTotal { get { return game.Dealer.CurrentHand.TotalValue.ToString(); } }
 
         #endregion
 
@@ -65,71 +84,11 @@ namespace BlackjackApp
             cards = cardOptions.Keys
                 .Where(s => !String.IsNullOrWhiteSpace(s))
                 .ToList();
+
+            playerCardImages = new List<Image>();
+            dealerCardImages = new List<Image>();
+
             BindingContext = this;
-        }
-
-        #endregion
-
-        #region Initialize
-
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            //Draw();
-        }
-
-        private void Draw()
-        {
-
-            // clear view
-            controlGrid.Children.Clear();
-
-            controlGrid = new Grid
-            {
-                RowSpacing = 1,
-                ColumnSpacing = 1
-            };
-
-            // create rows def
-            for (int i = 0; i < NUM_ROWS; ++i)
-            {
-                controlGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-            }
-
-            // create columns def
-            for (int i = 0; i < NUM_COLS; ++i)
-            {
-                controlGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-            }
-
-            //create cards row
-            CreateLabel("Player", 0, 0, 5, 10, defaultLabel);
-            CreateLabel("Dealer", 0, 10, 5, 10, defaultLabel);
-
-            // create decision row
-            CreateLabel("You should... HIT", 5, 0, 2, 20, defaultLabel);
-
-            // Stats grid row
-            CreateLabel("Stick", 7, 6, 1, 6, defaultLabel);
-            CreateLabel("Hit", 7, 12, 1, 6, defaultLabel);
-            CreateLabel("Win", 8, 0, 1, 6, defaultLabel);
-            CreateLabel("Lose", 9, 0, 1, 6, defaultLabel);
-            CreateLabel("Push", 10, 0, 1, 6, defaultLabel);
-
-            // Button Actions Row
-            CreateButton("Add Player Card", 17, 0, 3, 10, plainButton, AddPlayerCard_Clicked);
-            CreateButton("Add Dealer Card", 17, 10, 3, 10, plainButton, AddDealerCard_Clicked);
-
-            DrawPlayerCards();
-
-            DrawDealerCards();
-
-            DrawStats();
-
-            this.Content = controlGrid;
-
         }
 
         #endregion
@@ -145,6 +104,8 @@ namespace BlackjackApp
             OnPropertyChanged("ProbLoseHit");
             OnPropertyChanged("ProbPushHit");
             OnPropertyChanged("Decision");
+            OnPropertyChanged("PlayerTotal");
+            OnPropertyChanged("DealerTotal");
         }
         #endregion
 
@@ -152,58 +113,35 @@ namespace BlackjackApp
 
         private void DrawPlayerCards()
         {
-            playerCardGrid.Children.Clear();
+            // remove previous cards
+            foreach (var image in playerCardImages)
+            {
+                playerCardGrid.Children.Remove(image);
+            }
+            playerCardImages.Clear();
 
-            // only add one row for now - more rows when splitting is added
-            controlGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-
-            // create a column for each card in the hand
+            // add all cards
             for (int i = 0; i < game.Player.CurrentHand.Cards.Count; ++i)
             {
-                controlGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
-                CreateLabel(game.Player.CurrentHand.Cards[i].Value.ToString(), 0, i, 1, 1, defaultLabel);
+                playerCardImages.Add(CreateCardImage(playerCardGrid, game.Player.CurrentHand.Cards[i].Name, 1, i, 2, 2));
             }
 
-            //// add player cards
-            //int startCol = 0;
-            //foreach (Card card in game.Player.CurrentHand.Cards)
-            //{
-            //    CreateLabel(card.Value.ToString(), 1, startCol, 1, 2, defaultLabel);
-            //    startCol += 2;
-            //}
-            //// add the total
-            //CreateLabel(game.Player.CurrentHand.TotalValue.ToString(), 1, (NUM_COLS / 2) - 2, 1, 2, defaultLabel);
         }
 
         private void DrawDealerCards()
         {
-            // add dealer cards
-            int startCol = NUM_COLS / 2;
-            foreach (Card card in game.Dealer.CurrentHand.Cards)
+            // remove previous cards
+            foreach (var image in dealerCardImages)
             {
-                CreateLabel(card.Value.ToString(), 1, startCol, 1, 2, defaultLabel);
-                startCol += 2;
+                dealerCardGrid.Children.Remove(image);
             }
+            dealerCardImages.Clear();
 
-            // add the total
-            CreateLabel(game.Dealer.CurrentHand.TotalValue.ToString(), 1, NUM_COLS - 1, 1, 2, defaultLabel);
-        }
-
-        private void DrawStats()
-        {
-            // update the stats
-            // prob win before hit
-            CreateLabel(game.ProbCounter.beforeHitStats.win.ToString(), 8, 6, 1, 5, defaultLabel);
-            // prob lose before hit
-            CreateLabel(game.ProbCounter.beforeHitStats.lose.ToString(), 9, 6, 1, 5, defaultLabel);
-            // prob push before hit
-            CreateLabel(game.ProbCounter.beforeHitStats.push.ToString(), 10, 6, 1, 5, defaultLabel);
-            // prob win after hit
-            CreateLabel(game.ProbCounter.afterHitStats.win.ToString(), 8, 12, 1, 5, defaultLabel);
-            // prob lose after hit
-            CreateLabel(game.ProbCounter.afterHitStats.lose.ToString(), 9, 12, 1, 5, defaultLabel);
-            // prob push after hit
-            CreateLabel(game.ProbCounter.afterHitStats.push.ToString(), 10, 12, 1, 5, defaultLabel);
+            // add all cards
+            for (int i = 0; i < game.Dealer.CurrentHand.Cards.Count; ++i)
+            {
+                dealerCardImages.Add(CreateCardImage(dealerCardGrid, game.Dealer.CurrentHand.Cards[i].Name, 1, i, 2, 2));
+            }
         }
 
         #endregion
@@ -226,34 +164,30 @@ namespace BlackjackApp
 
         private void PlayerCardPicker_Selected(object sender, EventArgs e)
         {
-            if (playerCardPicker.SelectedIndex > -1)
-            {
-                playerCardPicker.Unfocus();
-                string cardStr = playerCardPicker.Items[playerCardPicker.SelectedIndex];
-                CardName cardName = cardOptions[cardStr];
-                game.AddPlayerCard(cardName);
-                UpdateStatsProperties();
-                DrawPlayerCards();
-            }
-
-            playerCardPicker.SelectedIndex = -1;
-            playerCardPicker.Unfocus();
+            CardPickerHelper(playerCardPicker, game.AddPlayerCard, DrawPlayerCards);
         }
 
         private void DealerCardPicker_Selected(object sender, EventArgs e)
         {
-            
-            if (dealerCardPicker.SelectedIndex > -1)
+            CardPickerHelper(dealerCardPicker, game.AddDealerCard, DrawDealerCards);
+        }
+
+        private delegate void AddCard(CardName cardName);
+        private delegate void DrawCards();
+        private void CardPickerHelper(Picker picker, AddCard addCard, DrawCards drawCards)
+        {
+            if (picker.SelectedIndex > -1)
             {
-                dealerCardPicker.Unfocus();
-                string cardStr = dealerCardPicker.Items[dealerCardPicker.SelectedIndex];
+                picker.Unfocus();
+                string cardStr = picker.Items[picker.SelectedIndex];
                 CardName cardName = cardOptions[cardStr];
-                game.AddDealerCard(cardName);
+                addCard(cardName);
                 UpdateStatsProperties();
+                drawCards();
             }
 
-            dealerCardPicker.SelectedIndex = -1;
-            dealerCardPicker.Unfocus();
+            picker.SelectedIndex = -1;
+            picker.Unfocus();
         }
 
         #endregion
@@ -268,13 +202,14 @@ namespace BlackjackApp
             Grid.SetColumnSpan(label, colSpan);
         }
 
-        private void CreateButton(string text, int col, int row, int rowSpan, int colSpan, Style style, EventHandler eventHandler)
+        private Image CreateCardImage(Grid grid, CardName cardName, int col, int row, int rowSpan, int colSpan)
         {
-            Button button = new Button { Text = text, Style = style };
-            controlGrid.Children.Add(button, row, col);
-            Grid.SetRowSpan(button, rowSpan);
-            Grid.SetColumnSpan(button, colSpan);
-            button.Clicked += eventHandler;
+            Image image = new Image { Source = ImageSource.FromResource(cardImageDict[cardName]) };
+            grid.Children.Add(image, row, col);
+            Grid.SetRowSpan(image, rowSpan);
+            Grid.SetColumnSpan(image, colSpan);
+
+            return image;
         }
 
         #endregion
