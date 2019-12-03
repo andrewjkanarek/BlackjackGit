@@ -65,6 +65,56 @@ namespace BlackjackLib
             return;
         }
 
+
+        //protected void SetDealerProbMap(Hand dealerHand, Deck deck, decimal probability)
+        //{
+        //    if (probability == 0) return;
+
+        //    // if hand total is over 21, the dealer busts
+        //    if (dealerHand.TotalValue > 21)
+        //    {
+        //        dealerProbDict[PossibleOutcome.BUST] += probability;
+        //        return;
+        //    }
+
+        //    // if the hand is over 16, the dealer cannot hit
+        //    // the probability of getting 19 is NOT prob(17) + prob(2)
+        //    if (dealerHand.TotalValue >= 17)
+        //    {
+        //        PossibleOutcome outcome = Deck.PossibleOutcomeValues[dealerHand.TotalValue];
+        //        dealerProbDict[outcome] += probability;
+        //        return;
+        //    }
+
+        //    // if the hand is below 16, dealer must hit
+        //    // we need to iterate possible values
+        //    foreach (CardName cardName in deck.GetRemainingCards())
+        //    {
+
+        //        int remainingCardCount = deck.CardCountDict[cardName];
+
+        //        // if there are none of this card left, it cannot appear
+        //        if (remainingCardCount <= 0) continue;
+
+        //        // the probability of getting a card AT THIS POINT,
+        //        // is the normal prob of selecting the card, multiplied by probability of getting to this point
+        //        decimal cardProb = deck.GetCardProb(cardName) * probability;
+
+        //        // update temporary dealer hand and deck
+        //        Card card = new Card(cardName);
+        //        Hand handCopy = dealerHand.Clone();
+        //        Deck deckCopy = deck.Clone();
+        //        handCopy.AddCard(card);
+        //        deckCopy.RemoveCard(cardName);
+
+        //        // update probability with new card and new probability
+        //        SetDealerProbMap(handCopy, deckCopy, cardProb);
+
+        //        // break loop if hand is already over 16
+        //        if (dealerHand.TotalValue >= 17) break;
+        //    }
+        //}
+
         protected void SetDealerProbMap(Hand dealerHand, Deck deck, decimal probability)
         {
             // if hand total is over 21, the dealer busts
@@ -74,34 +124,44 @@ namespace BlackjackLib
                 return;
             }
 
-            // if the hand is over 16, the dealer cannot hit
-            if (dealerHand.TotalValue >= 17)
+            // if the dealer has a 17 (not COULD have), then they cannot get anything else (must stick)
+            if (dealerHand.TotalValue >= 17 && probability == 1)
             {
                 PossibleOutcome outcome = Deck.PossibleOutcomeValues[dealerHand.TotalValue];
                 dealerProbDict[outcome] += probability;
                 return;
             }
 
-            // if the hand is below 16, dealer must hit
-            // we need to iterate possible values
-            foreach (CardName cardName in deck.CardCountDict.Keys.ToList())
+            // calculate all possibilities if player hits
+            foreach (CardName cardName in deck.GetRemainingCards())
             {
-
-                int remainingCardCount = deck.CardCountDict[cardName];
-
                 // if there are none of this card left, it cannot appear
+                int remainingCardCount = deck.CardCountDict[cardName];
                 if (remainingCardCount <= 0) continue;
 
+                // update temporary dealer hand and deck
+                Card card = new Card(cardName);
                 // the probability of getting a card AT THIS POINT,
                 // is the normal prob of selecting the card, multiplied by probability of getting to this point
                 decimal cardProb = deck.GetCardProb(cardName) * probability;
 
-                // update temporary dealer hand and deck
-                Card card = new Card(cardName);
+                // add to new hand
                 Hand handCopy = dealerHand.Clone();
-                Deck deckCopy = deck.Clone();
                 handCopy.AddCard(card);
+                // remove from new deck
+                Deck deckCopy = deck.Clone();
                 deckCopy.RemoveCard(cardName);
+
+                if (handCopy.TotalValue > 21)
+                {
+                    dealerProbDict[PossibleOutcome.BUST] += cardProb;
+                }
+                else if (handCopy.TotalValue >= 17)
+                {
+                    PossibleOutcome outcome = Deck.PossibleOutcomeValues[handCopy.TotalValue];
+                    dealerProbDict[outcome] += cardProb;
+                    continue;
+                }
 
                 // update probability with new card and new probability
                 SetDealerProbMap(handCopy, deckCopy, cardProb);
@@ -109,7 +169,7 @@ namespace BlackjackLib
         }
 
         // the probability a player wins is:
-        //  1) if the dealer busts AND they don't
+        //  1) if the dealer busts AND the player doesn't
         //  2) if the dealer has a higher hand than the dealer
         //      - the dealer must have at least a 16, so we need to calculate prob of each value between 16 and 21
         protected void SetPlayerProbMap(Hand playerHand, Deck deck, decimal probability)
@@ -118,10 +178,9 @@ namespace BlackjackLib
             if (playerHand.TotalValue >= 21) return;
 
             // calculate all possibilities if player hits
-            foreach (CardName cardName in deck.CardCountDict.Keys.ToList())
+            foreach (CardName cardName in deck.GetRemainingCards())
             {
                 int remainingCardCount = deck.CardCountDict[cardName];
-                int cardVal = Deck.CardValDict[cardName];
 
                 // if there are none of this card left, it cannot appear
                 if (remainingCardCount <= 0) continue;

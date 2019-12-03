@@ -54,6 +54,7 @@ namespace BlackjackLib
                 if (softAce != null)
                 {
                     softAce.ToggleAceValue();
+                    //hasSoftAce = false;
                 }
             }
         }
@@ -63,7 +64,8 @@ namespace BlackjackLib
             return new Hand
             {
                 cards = new List<Card>(this.cards),
-                totalValue = this.totalValue
+                totalValue = this.totalValue,
+                hasSoftAce = this.hasSoftAce
             };
         }
 

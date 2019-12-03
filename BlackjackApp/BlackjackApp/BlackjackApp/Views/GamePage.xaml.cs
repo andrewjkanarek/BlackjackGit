@@ -164,26 +164,51 @@ namespace BlackjackApp
 
         private void PlayerCardPicker_Selected(object sender, EventArgs e)
         {
-            CardPickerHelper(playerCardPicker, game.AddPlayerCard, DrawPlayerCards);
+            CardPickerHelper(playerCardPicker, game.Player, DrawPlayerCards);
         }
 
         private void DealerCardPicker_Selected(object sender, EventArgs e)
         {
-            CardPickerHelper(dealerCardPicker, game.AddDealerCard, DrawDealerCards);
+            CardPickerHelper(dealerCardPicker, game.Dealer, DrawDealerCards);
         }
 
-        private delegate void AddCard(CardName cardName);
         private delegate void DrawCards();
-        private void CardPickerHelper(Picker picker, AddCard addCard, DrawCards drawCards)
+        private void CardPickerHelper(Picker picker, PlayerBase player, DrawCards drawCards)
         {
             if (picker.SelectedIndex > -1)
             {
-                picker.Unfocus();
                 string cardStr = picker.Items[picker.SelectedIndex];
                 CardName cardName = cardOptions[cardStr];
-                addCard(cardName);
+                game.AddCard(cardName, player);
                 UpdateStatsProperties();
                 drawCards();
+
+                // show stats grid if players have appropriate amount of cards
+                if (game.Dealer.CurrentHand.Cards.Count >= 1 && game.Player.CurrentHand.Cards.Count >= 2)
+                {
+                    probTable.IsVisible = true;
+                    decisionLabel.IsVisible = true;
+                    addDealerCardLabel.IsVisible = false;
+                    addPlayerCardLabel.IsVisible = false;
+
+                    game.UpdateStats();
+                }
+                // dealer must have at least 1 card
+                else if (game.Dealer.CurrentHand.Cards.Count < 1)
+                {
+                    probTable.IsVisible = false;
+                    decisionLabel.IsVisible = false;
+                    addDealerCardLabel.IsVisible = true;
+                    addPlayerCardLabel.IsVisible = false;
+                }
+                // player must have at least 2 cards
+                else if (game.Player.CurrentHand.Cards.Count < 2)
+                {
+                    probTable.IsVisible = false;
+                    decisionLabel.IsVisible = false;
+                    addDealerCardLabel.IsVisible = false;
+                    addPlayerCardLabel.IsVisible = true;
+                }
             }
 
             picker.SelectedIndex = -1;

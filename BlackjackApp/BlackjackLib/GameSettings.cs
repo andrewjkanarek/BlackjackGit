@@ -10,7 +10,7 @@ namespace BlackjackLib
 
         public GameSettings()
         {
-            NumDecks = 4;
+            NumDecks = 1;
         }
 
         public GameSettings(int numDecks)

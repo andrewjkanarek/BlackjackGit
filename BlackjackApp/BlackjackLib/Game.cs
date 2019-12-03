@@ -26,23 +26,18 @@ namespace BlackjackLib
             probCounter = new ProbCounterSlow();
         }
 
-        public void AddPlayerCard(CardName cardName)
+        public delegate void AddCardDelegate(Card card);
+        public void AddCard(CardName cardName, PlayerBase player)
         {
             if (cardName == CardName.NONE) return;
 
             Card card = new Card(cardName);
             player.AddCard(card);
             deck.RemoveCard(cardName);
-            probCounter.UpdateStats(player.CurrentHand, dealer.CurrentHand, deck);
         }
 
-        public void AddDealerCard(CardName cardName)
+        public void UpdateStats()
         {
-            if (cardName == CardName.NONE) return;
-
-            Card card = new Card(cardName);
-            dealer.AddCard(card);
-            deck.RemoveCard(cardName);
             probCounter.UpdateStats(player.CurrentHand, dealer.CurrentHand, deck);
         }
     }

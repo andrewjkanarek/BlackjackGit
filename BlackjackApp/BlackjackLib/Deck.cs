@@ -109,6 +109,15 @@ namespace BlackjackLib
             totalCardCount--;
         }
 
+        public List<CardName> GetRemainingCards()
+        {
+            return cardCountDict
+                .Where(d => d.Value > 0)
+                .Select(d => d.Key)
+                .OrderBy(d => d)
+                .ToList();
+        }
+
         public void AddCard(CardName cardName)
         {
             cardCountDict[cardName]++;
