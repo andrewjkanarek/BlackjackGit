@@ -60,14 +60,14 @@ namespace BlackjackApp
 
         public List<string> Cards { get { return cards;  } }
 
-        public string ProbWinStick { get { return game.ProbCounter.beforeHitStats.win.ToString("F4"); } }
-        public string ProbLoseStick { get { return game.ProbCounter.beforeHitStats.lose.ToString("F4"); } }
-        public string ProbPushStick { get { return game.ProbCounter.beforeHitStats.push.ToString("F4"); } }
-        public string ProbWinHit { get { return game.ProbCounter.afterHitStats.win.ToString("F4"); } }
-        public string ProbLoseHit { get { return game.ProbCounter.afterHitStats.lose.ToString("F4"); } }
-        public string ProbPushHit { get { return game.ProbCounter.afterHitStats.push.ToString("F4"); } }
+        public string ProbWinStick { get { return game.ProbCounter.BeforeHitStats.win.ToString("F4"); } }
+        public string ProbLoseStick { get { return game.ProbCounter.BeforeHitStats.lose.ToString("F4"); } }
+        public string ProbPushStick { get { return game.ProbCounter.BeforeHitStats.push.ToString("F4"); } }
+        public string ProbWinHit { get { return game.ProbCounter.AfterHitStats.win.ToString("F4"); } }
+        public string ProbLoseHit { get { return game.ProbCounter.AfterHitStats.lose.ToString("F4"); } }
+        public string ProbPushHit { get { return game.ProbCounter.AfterHitStats.push.ToString("F4"); } }
 
-        public string Decision { get { return String.Format("You should... {0}", game.ProbCounter.decision.ToString()); } }
+        public string Decision { get { return String.Format("You should... {0}", game.ProbCounter.Decision.ToString()); } }
         public string PlayerTotal { get { return game.Player.CurrentHand.TotalValue.ToString(); } }
         public string DealerTotal { get { return game.Dealer.CurrentHand.TotalValue.ToString(); } }
 
