@@ -98,6 +98,7 @@ namespace BlackjackLib
 
         public decimal GetCardProb(CardName cardName)
         {
+            if (cardName == CardName.NONE) return 0;
             return (decimal)cardCountDict[cardName] / totalCardCount;
         }
 
@@ -158,6 +159,14 @@ namespace BlackjackLib
 
             cardCountDict[cardName] = newCount;
             totalCardCount += cardCountChange;
+        }
+
+        public static CardName GetCardName(int cardValue)
+        {
+            return CardValDict
+                .Where(c => c.Value == cardValue)
+                .Select(c => c.Key)
+                .FirstOrDefault();
         }
 
         #endregion

@@ -180,8 +180,6 @@ namespace BlackjackApp
                 string cardStr = picker.Items[picker.SelectedIndex];
                 CardName cardName = cardOptions[cardStr];
                 game.AddCard(cardName, player);
-                UpdateStatsProperties();
-                drawCards();
 
                 // show stats grid if players have appropriate amount of cards
                 if (game.Dealer.CurrentHand.Cards.Count >= 1 && game.Player.CurrentHand.Cards.Count >= 2)
@@ -209,6 +207,9 @@ namespace BlackjackApp
                     addDealerCardLabel.IsVisible = false;
                     addPlayerCardLabel.IsVisible = true;
                 }
+
+                UpdateStatsProperties();
+                drawCards();
             }
 
             picker.SelectedIndex = -1;

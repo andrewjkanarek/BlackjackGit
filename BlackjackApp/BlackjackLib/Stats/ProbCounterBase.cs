@@ -61,14 +61,26 @@ namespace BlackjackLib
         {
             ResetStats();
 
-            SetDealerProbMap(dealerHand, deck, 1);
-            SetPlayerProbMap(playerHand, deck, 1);
+            SetProbMap(deck);
+
+            SetDealerProbMap(dealerHand, deck, probability: 1);
+            SetPlayerProbMap(playerHand, deck, probability: 1);
 
             beforeHitStats = GetBeforeHitStats(playerHand, dealerHand);
             afterHitStats = GetAfterHitStats();
 
             decision = GetDecision();
         }
+
+        #endregion
+
+        #region Abstract Functions
+
+        protected abstract void SetProbMap(Deck deck);
+
+        protected abstract void SetDealerProbMap(Hand dealerHand, Deck deck, decimal probability = 1);
+
+        protected abstract void SetPlayerProbMap(Hand playerHand, Deck deck, decimal probability = 1);
 
         #endregion
 
@@ -83,10 +95,6 @@ namespace BlackjackLib
             ResetProbDict(dealerProbDict);
             return;
         }
-
-        protected abstract void SetDealerProbMap(Hand dealerHand, Deck deck, decimal probability);
-
-        protected abstract void SetPlayerProbMap(Hand playerHand, Deck deck, decimal probability);
 
         #endregion
 

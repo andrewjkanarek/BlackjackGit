@@ -7,13 +7,13 @@ namespace BlackjackLib
         private Deck deck;
         private Player player;
         private Dealer dealer;
-        private ProbCounterSlow probCounter;
+        private ProbCounterBase probCounter;
         private GameSettings gameSettings;
 
         public Deck Deck { get { return deck; } }
         public Player Player { get { return player; } }
         public Dealer Dealer { get { return dealer; } }
-        public ProbCounterSlow ProbCounter { get { return probCounter;  } }
+        public ProbCounterBase ProbCounter { get { return probCounter; } }
         public GameSettings GameSettings { get { return gameSettings; } }
 
 
@@ -23,7 +23,7 @@ namespace BlackjackLib
             deck = new Deck(gameSettings.NumDecks);
             player = new Player();
             dealer = new Dealer();
-            probCounter = new ProbCounterSlow();
+            probCounter = new ProbCounterFast();
         }
 
         public delegate void AddCardDelegate(Card card);

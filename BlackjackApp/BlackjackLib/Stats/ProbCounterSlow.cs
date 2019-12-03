@@ -7,7 +7,11 @@ namespace BlackjackLib
     public class ProbCounterSlow : ProbCounterBase
     {
         public ProbCounterSlow() : base() { }
-       
+
+        protected override void SetProbMap(Deck deck)
+        {
+            return;
+        }
 
         protected override void SetDealerProbMap(Hand dealerHand, Deck deck, decimal probability)
         {
